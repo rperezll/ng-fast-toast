@@ -1,0 +1,24 @@
+# Compiled output
+showcase-project/dist/
+showcase-project/build/
+
+# Dependency directories
+showcase-project/node_modules/
+showcase-project/bower_components/
+
+# Angular build-specific files
+showcase-project/.angular/
+showcase-project/.angular-cache/
+
+showcase-project/.vscode/
+
+# Logs
+showcase-project/npm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+showcase-project/.env
+showcase-project/.env.*.local
