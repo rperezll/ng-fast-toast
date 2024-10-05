@@ -1,0 +1,4 @@
+@for (notification of notifications; track notification.guid; let i = $index) {
+	<toast [config]="notification" [index]="i"></toast>
+}
+  

@@ -4,7 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "strict": true,
+    "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -12,6 +12,9 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "paths": {
+      "ng-fast-toast": [
+        "./dist/ng-fast-toast"
+      ]
     },
     "esModuleInterop": true,
     "sourceMap": true,

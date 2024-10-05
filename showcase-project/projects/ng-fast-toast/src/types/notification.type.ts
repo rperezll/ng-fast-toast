@@ -1,0 +1,1 @@
+export type NotificationType = 'success' | 'warning' | 'error' | 'loading';

@@ -1,10 +1,51 @@
-
 <section class="h-screen w-screen flex flex-col items-center justify-center">
+  <ng-fast-toast></ng-fast-toast>
   <div class="max-w-[500px] flex flex-col gap-3 p-10">
-
-    <h1 class="font-bold text-xl xl:text-7xl text-pretty">
-        Welcome to Ng Fast Toast
+    <p class="font-mono text-pretty">rperezll</p>
+    <h1 class="font-bold text-2xl md:text-4xl xl:text-7xl text-pretty">
+      Welcome to Ng Fast Toast
     </h1>
-    <p class="font-mono text-pretty">A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app. With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.</p>
+    <p class="font-mono text-pretty">
+      A lightweight and fast notification library for Angular, designed to make
+      it super easy to display quick, stylish alerts (toasts) in your app. With
+      a simple and customizable API, you can easily control the look, position,
+      and behavior of your notifications.
+    </p>
   </div>
+  <section class="max-w-[500px] flex flex-col sm:flex-row gap-2 px-3 sm:px-0">
+    <button
+      class="group relative inline-block text-sm font-medium text-red-600 focus:outline-none focus:ring active:text-red-500"
+      (click)="executeToast('success')"
+    >
+      <span class="absolute inset-0 border border-current"></span>
+      <span
+        class="block border border-current bg-white px-12 py-3 transition-transform group-hover:-translate-x-1 group-hover:-translate-y-1"
+      >
+        Success
+      </span>
+    </button>
+    <button
+      class="group relative inline-block text-sm font-medium text-red-600 focus:outline-none focus:ring active:text-red-500"
+      (click)="executeToast('warning')"
+    >
+      <span class="absolute inset-0 border border-current"></span>
+      <span
+        class="block border border-current bg-white px-12 py-3 transition-transform group-hover:-translate-x-1 group-hover:-translate-y-1"
+      >
+        Warning
+      </span>
+    </button>
+    <button
+      class="group relative inline-block text-sm font-medium text-red-600 focus:outline-none focus:ring active:text-red-500"
+      (click)="executeToast('error')"
+    >
+      <span class="absolute inset-0 border border-current"></span>
+      <span
+        class="block border border-current bg-white px-12 py-3 transition-transform group-hover:-translate-x-1 group-hover:-translate-y-1"
+      >
+        Error
+      </span>
+    </button>
+  </section>
 </section>
+

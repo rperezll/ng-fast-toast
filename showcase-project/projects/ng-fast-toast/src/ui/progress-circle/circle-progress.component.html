@@ -1,0 +1,29 @@
+<div class="relative w-6 h-6">
+  <svg class="absolute inset-0 w-6 h-6" viewBox="0 0 100 100">
+    <circle
+      class="text-neutral-500/20"
+      stroke-width="10"
+      stroke="currentColor"
+      fill="transparent"
+      r="45"
+      cx="50"
+      cy="50"
+    />
+  </svg>
+
+  <svg class="absolute inset-0 w-6 h-6" viewBox="0 0 100 100">
+    <circle
+      class="circular-progress"
+      [ngClass]="color"
+      stroke-width="10"
+      stroke="currentColor"
+      fill="transparent"
+      r="45"
+      cx="50"
+      cy="50"
+      stroke-dasharray="283"
+      stroke-dashoffset="283"
+      [style.animation-duration]="time + 's'"
+    />
+  </svg>
+</div>
