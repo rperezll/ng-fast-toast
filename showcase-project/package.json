@@ -6,7 +6,8 @@
     "dev": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.html\" \"projects/**/*.ts\" \"projects/**/*.html\"",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -18,16 +19,22 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.6",
+    "@angular-eslint/builder": "18.3.1",
     "@angular/cli": "^18.2.6",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "@typescript-eslint/eslint-plugin": "8.8.0",
+    "@typescript-eslint/parser": "8.8.0",
     "autoprefixer": "^10.4.20",
+    "eslint-plugin-angular": "4.1.0",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

@@ -4,5 +4,5 @@
  * @returns The equivalent in milliseconds.
  */
 export function secondsToMilliseconds(seconds: number): number {
-  return seconds * 1000;
+	return seconds * 1000;
 }

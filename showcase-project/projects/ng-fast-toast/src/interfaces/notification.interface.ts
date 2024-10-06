@@ -1,4 +1,4 @@
-export interface UserNotification {
+export interface Notification {
 	title?: string;
 	content: string;
 	duration?: number;

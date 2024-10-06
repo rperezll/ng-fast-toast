@@ -1,5 +1,5 @@
-import { NotificationType } from "../types/notification.type";
-import { BgColorTypes } from "../utils/color-types";
+import { NotificationType } from '../types/notification.type';
+import { BgColorTypes } from '../utils/color-types';
 
 interface ContentToast {
 	title?: string;
@@ -11,5 +11,5 @@ export interface ToastConfig {
 	type: NotificationType;
 	content: ContentToast;
 	colorConfig: BgColorTypes;
-    duration: number;
+	duration: number;
 }

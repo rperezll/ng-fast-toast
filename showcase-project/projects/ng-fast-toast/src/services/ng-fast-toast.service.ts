@@ -1,40 +1,45 @@
 import { Injectable } from '@angular/core';
-import { UserNotification } from '../interfaces/user-notification.interface';
+import { Notification } from '../interfaces/notification.interface';
 import { Observable, Subject } from 'rxjs';
-import { Notification } from '../notification/notification';
 import { NotificationType } from '../types/notification.type';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class NgFastToastService {
-	private emitCreateNotification = new Subject<{notification: UserNotification, type: NotificationType}>();
+	private emitCreateNotification = new Subject<{ notification: Notification; type: NotificationType }>();
 	emitCreateNotification$ = this.emitCreateNotification.asObservable();
 
 	/**
+	 * @description Triggers a `success` notification.
+	 * Use this method to display messages indicating that an action was completed successfully.
 	 *
-	 * @abstract Ejecuta una notificación de tipo `success`
-	 * @param notification: UserNotification
+	 * @param {Notification} notification - The notification object containing information such as the message, title, and other relevant notification data.
+	 * @returns {void}
 	 */
-	success(notification: UserNotification) {
-		this.emitCreateNotification.next({notification, type: 'success'});
+	success(notification: Notification): void {
+		this.emitCreateNotification.next({ notification, type: 'success' });
 	}
 
 	/**
+	 * @description Triggers a `warn` notification.
+	 * Use this method to display warning messages indicating that the user should be cautious about the action or result.
 	 *
-	 * @abstract Ejecuta una notificación de tipo `warn`
-	 * @param notification: UserNotification
+	 * @param {Notification} notification - The notification object containing information such as the message, title, and other relevant notification data.
+	 * @returns {void}
 	 */
-	warn(notification: UserNotification) {
-		this.emitCreateNotification.next({notification, type: 'warning'});
+	warn(notification: Notification): void {
+		this.emitCreateNotification.next({ notification, type: 'warning' });
 	}
 
 	/**
+	 * @description Triggers an `error` notification.
+	 * Use this method to display error messages indicating that an action has failed or encountered an issue.
 	 *
-	 * @abstract Ejecuta una notificación de tipo `error`
-	 * @param notification: UserNotification
+	 * @param {Notification} notification - The notification object containing information such as the message, title, and other relevant notification data.
+	 * @returns {void}
 	 */
-	error(notification: UserNotification) {
-		this.emitCreateNotification.next({notification, type: 'error'});
+	error(notification: Notification) {
+		this.emitCreateNotification.next({ notification, type: 'error' });
 	}
 }

@@ -1,4 +1,7 @@
-@for (notification of notifications; track notification.guid; let i = $index) {
-	<toast [config]="notification" [index]="i"></toast>
-}
-  
+<div role="alert" class="fixed w-full h-full bottom-0">
+	<div class="flex flex-col items-end justify-end p-4 h-full gap-2">
+		@for (notification of notifications; track notification.guid; let i = $index) {
+			<toast [config]="notification" (finish)="finishNotification($event)"></toast>
+		}
+	</div>
+</div>
