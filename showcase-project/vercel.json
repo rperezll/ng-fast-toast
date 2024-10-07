@@ -2,7 +2,7 @@
 	"rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
 	"builds": [
 		{
-			"src": "dist/my-app/**/*",
+			"src": "dist/showcase-project/**/*",
 			"use": "@vercel/static"
 		}
 	]
