@@ -19,18 +19,18 @@ export class AppComponent {
 	executeToast(type) {
 		switch (type) {
 			case 'success':
-				this.fastToast.success({ title: 'hola!', content: 'Hola qué tal estás?', duration: 5 });
+				this.fastToast.success({ title: 'Perfect!', content: 'Good Job today.', duration: 3 });
 				break;
 			case 'warning':
 				this.fastToast.warn({
-					title: 'hola!',
+					title: 'Listen!',
 					content:
 						'A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app. With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.',
 					duration: 5,
 				});
 				break;
 			case 'error':
-				this.fastToast.error({ title: 'hola!', content: 'Hola qué tal estás?', duration: 5 });
+				this.fastToast.error({ title: 'Oh noo!', content: 'Something went wrong.', duration: 5 });
 				break;
 			default:
 				break;
