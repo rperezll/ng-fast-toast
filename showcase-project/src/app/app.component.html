@@ -1,16 +1,16 @@
 <ng-fast-toast></ng-fast-toast>
 
-<section class="flex flex-col items-center justify-center h-full">
-	<div class="max-w-[500px] flex flex-col gap-3 p-10">
+<section class="flex h-full flex-col items-center justify-center">
+	<div class="flex max-w-[500px] flex-col gap-3 p-10">
 		<div>
-			<p class="font-mono text-pretty">rperezll</p>
-			<h1 class="font-bold text-2xl md:text-4xl xl:text-7xl text-pretty"> Welcome to Ng Fast Toast </h1>
+			<p class="text-pretty font-mono">rperezll</p>
+			<h1 class="text-pretty text-2xl font-bold md:text-4xl xl:text-7xl"> Welcome to Ng Fast Toast </h1>
 		</div>
-		<p class="font-mono text-pretty">
+		<p class="text-pretty font-mono">
 			A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app.
 			With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.
 		</p>
-		<section class="flex flex-col sm:flex-row justify-between gap-1">
+		<section class="flex flex-col justify-between gap-1 sm:flex-row">
 			@for (type of notificationTypeList; track notificationTypeList) {
 				<button class="group relative inline-block text-sm font-medium text-red-600 active:text-red-500" (click)="executeToast(type)">
 					<span class="absolute inset-0 border border-current"></span>

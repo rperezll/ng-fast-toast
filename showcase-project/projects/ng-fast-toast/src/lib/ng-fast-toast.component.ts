@@ -3,16 +3,13 @@ import { NgFastToastService } from '../services/ng-fast-toast.service';
 import { ToastComponent } from '../ui/toast/toast.component';
 import { ToastConfig } from '../interfaces/notification-config.interface';
 import { generateGuid } from '../utils/generate-guid';
-import { Notification } from '../interfaces/notification.interface';
-import { NotificationType } from '../types/notification.type';
-import { BgColorTypes, calculateToastColors, ColorTypes } from '../utils/color-types';
+import { calculateToastColors } from '../utils/color-types';
 
 @Component({
 	selector: 'ng-fast-toast',
 	standalone: true,
 	imports: [ToastComponent],
 	templateUrl: './ng-fast-toast.component.html',
-	styles: ``,
 })
 export class NgFastToastComponent implements OnInit {
 	notifications: ToastConfig[] = [];

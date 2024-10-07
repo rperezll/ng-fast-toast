@@ -3,11 +3,14 @@ import { ToastConfig } from '../../interfaces/notification-config.interface';
 import { CircleProgressComponent } from '../progress-circle/circle-progress.component';
 import { secondsToMilliseconds } from '../../utils/time-parser';
 import { CommonModule } from '@angular/common';
+import { WarningIconSvg } from '../../icons/warning/warning.component';
+import { SuccessIconSvg } from '../../icons/success/success.component';
+import { ErrorIconSvg } from '../../icons/error/error.component';
 
 @Component({
 	selector: 'toast',
 	standalone: true,
-	imports: [CommonModule, CircleProgressComponent],
+	imports: [CommonModule, CircleProgressComponent, WarningIconSvg, SuccessIconSvg, ErrorIconSvg],
 	styles: `
 		@keyframes slideIn {
 			0% {
