@@ -2,7 +2,8 @@
 
 A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app. With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.
 
-> [!WARNING] > **ng-fast-toast** is still in development. It does not have a release yet.
+> [!WARNING]
+> **ng-fast-toast** is still in development. It does not have a release yet.
 
 ## Features
 
@@ -18,4 +19,5 @@ A lightweight and fast notification library for Angular, designed to make it sup
 
 Install the library via npm:
 
-> [!WARNING] > **ng-fast-toast** is still in development. Please wait for the first release.
+> [!WARNING]
+> **ng-fast-toast** is still in development. Please wait for the first release.
