@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgFastToastComponent, NgFastToastService } from '../../projects/ng-fast-toast/src/public-api';
 import { NotificationTypeList } from '../../projects/ng-fast-toast/src/types/notification.type';
+import { GithubIcon } from '../icons/github/github.component';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, NgFastToastComponent],
+	imports: [RouterOutlet, NgFastToastComponent, GithubIcon],
 	providers: [NgFastToastService],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.css',
