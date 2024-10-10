@@ -62,7 +62,7 @@ export class ToastComponent implements OnInit {
 			setTimeout(() => {
 				alertElement.classList.remove('toast-enter');
 				alertElement.classList.add('toast-exit');
-				// Witing time for remove notification
+				// Waiting time for remove notification
 				setTimeout(() => {
 					this.finish.emit(this.config.guid);
 				}, 500);
