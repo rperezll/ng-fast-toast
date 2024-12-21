@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NgFastToastComponent, NgFastToastService } from '../../projects/ng-fast-toast/src/public-api';
+import { NgFastToastComponent, NgFastToastService, ngFastToastConfig } from '../../projects/ng-fast-toast/src/public-api';
 import { NotificationTypeList } from '../../projects/ng-fast-toast/src/types/notification.type';
 import { GithubIcon } from '../icons/github/github.component';
+import { mockProvidedConfig } from './mocks/custom-toast.mock';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, NgFastToastComponent, GithubIcon],
-	providers: [NgFastToastService],
+	imports: [NgFastToastComponent, GithubIcon],
+	providers: [NgFastToastService, ngFastToastConfig({ align: 'right', customToast: mockProvidedConfig })],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.css',
 })
