@@ -1,0 +1,68 @@
+---
+title: "Usage"
+sidebarTitle: "Usage"
+description: "How to use ng-fast-toast to display toast notifications in your Angular project."
+publishDate: "2024-12-21"
+category: "Getting started"
+author: {
+    name: "rperezll",
+    url: "https://github.com/rperezll"
+}
+---
+
+After installing and configuring Tailwind CSS and ng-fast-toast, you can easily start using toast notifications in your Angular application. Follow the steps below to integrate and display toast messages.
+
+## Import the Toast Component
+To use the toast notifications, first, you need to import the NgFastToastComponent in your main application component.
+
+```ts
+import { Component } from "@angular/core";
+import { NgFastToastComponent } from "ng-fast-toast";
+
+@Component({
+  selector: "app-root",
+  standalone: true,
+  imports: [NgFastToastComponent],
+  templateUrl: "./app.component.html",
+})
+export class AppComponent {}
+```
+
+## Add the Toast selector
+
+Next, add the `<ng-fast-toast>` selector to your component's template (e.g., app.component.html). This is where the toast notifications will be rendered.
+
+```html
+<ng-fast-toast></ng-fast-toast>
+``` 
+
+Once this is done, you'll see a log message in the browser's console:
+
+```text
+🍞 ng-fast-toast initialized correctly with default config.
+```
+
+## Use the Toast Service
+
+Now that the component is set up, you can inject the NgFastToastService and use it to display toast notifications in your component.
+
+```ts
+import { Component, OnInit, inject } from "@angular/core";
+import { NgFastToastService } from "ng-fast-toast";
+
+@Component({
+  selector: "app-root",
+  standalone: true,
+  imports: [NgFastToastComponent],
+  templateUrl: "./app.component.html",
+})
+export class AppComponent implements OnInit {
+  toast = inject(NgFastToastService);
+
+  ngOnInit() {
+    this.toast.success({content: 'ng-fast-toast is ready!'});
+  }
+}
+```
+
+When the component is initialized, a success notification will appear with the message "ng-fast-toast is ready!" 🚀.

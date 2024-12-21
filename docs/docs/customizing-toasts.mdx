@@ -1,0 +1,100 @@
+---
+title: "Customizing Toasts"
+sidebarTitle: "Toasts"
+description: "How to Customize the Library."
+publishDate: "2024-12-21"
+category: "Customizing"
+author: {
+    name: "rperezll",
+    url: "https://github.com/rperezll"
+}
+---
+
+You can customize the **position** and **colors** of all the elements of the toast card. You can control whether the toast appears from the left or right, as well as modify the background, text, and border colors to match your application's theme.
+
+## Customizing Types
+
+You can preset or override the styles for the different toast types (`success`, `warning`, and `error`) using the Config type exported by the library. This allows you to easily adjust the appearance of each toast type to fit your design requirements. To override the default styles, use the `ngFastToastConfig` provider injection with the `customToast` field.
+
+```ts
+import { ngFastToastConfig } from 'ng-fast-toast';
+
+@NgModule({
+  selector: "app-root",
+  standalone: true,
+  imports: [NgFastToastComponent],  
+  providers: [ngFastToastConfig(myConfig)],
+  templateUrl: "./app.component.html",
+})
+```
+
+The `myConfig` variable must adhere to the `Config` type, which is also exported by the library:
+
+ <UiBlock component="component" title="Example of Types Customization">
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    ```ts
+    import { Config } from 'ng-fast-toast';
+
+    export const myConfig: Config = [
+      {
+        customToast: myConfigTypes
+      }
+    ];
+    ```
+
+    ```ts
+    import { BgColorTypes } from 'ng-fast-toast';
+
+    export const myConfigTypes: BgColorTypes[] = [
+      {
+        type: 'error',
+        customToast: 'bg-red-500',
+      },
+      {
+        type: 'warning',
+        titleSvgColor: '#fbbf24',
+      },
+    ]; 
+    ```
+  </div>
+ </UiBlock>
+
+ <Alert type="info">You can consult the definition of all the previous types in the following documentation.</Alert>
+
+## Alignment
+
+The library allows you to align toasts to the **left** or **right**, using the same mechanism explained in the previous section: `ngFastToastConfig`. Now, we will complete the previous example by adding a custom alignment.
+
+ <UiBlock component="component" title="Example of Align Customization">
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    ```ts
+    import { Config } from 'ng-fast-toast';
+
+    export const myConfig: Config = [
+      {
+        align: 'left',
+        customToast: myConfigTypes
+      }
+    ];
+    ```
+
+    ```ts
+    import { BgColorTypes } from 'ng-fast-toast';
+
+    export const myConfigTypes: BgColorTypes[] = [
+      {
+        type: 'error',
+        customToast: 'bg-red-500',
+      },
+      {
+        type: 'warning',
+        titleSvgColor: '#fbbf24',
+      },
+    ]; 
+    ```
+  </div>
+ </UiBlock>
+
+The new `align` field added in the previous code block allows you to align the toasts to the **left**.

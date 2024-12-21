@@ -1,0 +1,39 @@
+---
+title: "Installation"
+sidebarTitle: "Installation"
+description: "You'll learn how to install the ng-fast-toast library in your project."
+publishDate: "2024-12-21"
+category: "Getting started"
+author: {
+    name: "rperezll",
+    url: "https://github.com/rperezll"
+}
+---
+
+## Install the library
+
+To integrate toast notifications into your Angular project, you need to install the `ng-fast-toast` library. This package provides an easy-to-use service for displaying customizable toast notifications.
+
+Run the following command to install it:
+
+```bash
+npm i ng-fast-toast
+```
+
+<Alert type="info">If you want more information about the npm package, check out its [official npm page]().</Alert>
+
+## Configure Tailwind
+
+To ensure that Tailwind CSS properly scans the `ng-fast-toast` package files for utility classes, you need to update your `tailwind.config` file. Add the following configuration to the `content` array in your `tailwind.config`:
+
+```ts
+content: [
+  "./node_modules/ng-fast-toast/**/*.{html,ts,js,mjs}"
+],
+```
+
+## Usage
+
+Now we're ready to start using ng-fast-toast. For that, let's head to the usage documentation:
+
+<DocumentCard documentSlug="usage" />

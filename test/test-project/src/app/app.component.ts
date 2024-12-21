@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { NgFastToastComponent, NgFastToastService } from 'ng-fast-toast';
+import { NgFastToastComponent, NgFastToastService, ngFastToastConfig } from 'ng-fast-toast';
 
 @Component({
   selector: 'app-root',
