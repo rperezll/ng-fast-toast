@@ -1,5 +1,5 @@
 import { NotificationType } from '../types/notification.type';
-import { BgColorTypes } from '../utils/color-types';
+import { BgColorTypes } from './bg-color.interface';
 
 interface ContentToast {
 	title?: string;
