@@ -1,0 +1,12 @@
+{
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"editor.stickyScroll.scrollWithEditor": false,
+	"workbench.tree.enableStickyScroll": false,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"[cpp]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	}
+}

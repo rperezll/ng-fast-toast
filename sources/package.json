@@ -1,10 +1,11 @@
 {
   "name": "showcase-project",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
     "build": "ng build",
+    "build:lib": "ng build ng-fast-toast",
     "watch": "ng build --watch --configuration development",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.html\" \"projects/**/*.ts\" \"projects/**/*.html\"",
     "lint": "ng lint"
