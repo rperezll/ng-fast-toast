@@ -4,11 +4,12 @@ A **lightweight** and **speedy** **notification library** for **Angular (18+)**,
 
 _"Fast alerts, less hassle, and yes, it plays nicely with Tailwind!"_
 
-> [!WARNING] > **ng-fast-toast** is still in development. It does not have a release yet.
+> [!WARNING]
+> **ng-fast-toast** is still in development. It does not have a release yet.
 
-<a style="margin-top: 20px; margin-bottom: 20px;" align="center" href="https://ng-fast-toast.vercel.app/">
-  <kbd><img alt="Snapshot funcionality ng-fast-toast" src="/resources/ng-fast-toast.png" height="auto" width="500" style="border-radius:50%"></kbd>
-</a>
+<div style="margin-top: 20px; margin-bottom: 20px;" href="https://ng-fast-toast.vercel.app/" align="center">
+  <img alt="Snapshot funcionality ng-fast-toast" src="/resources/ng-fast-toast.png" height="auto" width="500" style="border-radius:50%">
+</div>
 
 ## Features
 
