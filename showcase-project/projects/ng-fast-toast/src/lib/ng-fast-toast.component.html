@@ -1,4 +1,11 @@
-<div role="alert" class="fixed bottom-0 h-full w-full">
+<div
+	role="ng-fast-toast"
+	class="fixed bottom-0"
+	[ngClass]="{
+		'right-0': ngFastToastConfig?.align !== 'left',
+		'left-0': ngFastToastConfig?.align === 'left'
+	}"
+>
 	<div class="flex h-full flex-col items-end justify-end gap-2 p-4">
 		@for (notification of notifications; track notification.guid; let i = $index) {
 			<toast [config]="notification" (finish)="finishNotification($event)"></toast>
