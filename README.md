@@ -1,9 +1,12 @@
 # Ng-fast-toast
 
-A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app. With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.
+<img src="/resources/ng-fast-toast.png" alt="Snapshot funcionality ng-fast-toast" style="width: 150px; height: auto;">
 
-> [!WARNING]
-> **ng-fast-toast** is still in development. It does not have a release yet.
+A **lightweight** and **speedy** **notification library** for **Angular (18+)**, perfect for quickly adding stylish toast alerts to your app. Whether you're building a sleek project with **Tailwind** or just want something simple yet customizable, this library lets you tweak the look, position, and behavior of your notifications with ease.
+
+_"Fast alerts, less hassle, and yes, it plays nicely with Tailwind!"_
+
+> [!WARNING] > **ng-fast-toast** is still in development. It does not have a release yet.
 
 ## Features
 
@@ -19,5 +22,4 @@ A lightweight and fast notification library for Angular, designed to make it sup
 
 Install the library via npm:
 
-> [!WARNING]
-> **ng-fast-toast** is still in development. Please wait for the first release.
+> [!WARNING] > **ng-fast-toast** is still in development. Please wait for the first release.
