@@ -1,0 +1,17 @@
+services:
+  docshub:
+    container_name: docshub
+    image: atmgrupomaggioli/docshub:latest
+    ports:
+      - "4321:4321"
+    restart: unless-stopped
+    volumes:
+      - ./docs:/app/src/docs
+      - ./images:/app/public/images
+    environment:
+      DOCUMENTATION_TITLE: "NgFastToast Documentation"
+      VERSION: "0.0.1-dev"
+      AUTHOR: "rperezll"
+      LICENSE: "GPL-3.0"
+      REPOSITORY_TYPE: "GitHub"
+      REPOSITORY_URL: "https://github.com/rperezll/ng-fast-toast"
