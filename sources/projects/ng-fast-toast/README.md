@@ -14,5 +14,5 @@ To properly **install**, **configure**, and learn about the **prerequisites**, p
 
 Copyright © 2024 rperezll (https://github.com/rperezll)
 
-- This file is part of a project licensed under the **GPL-3.0 License**.
+- This library is licensed under the **GPL-3.0 License**.
 - See the LICENSE file in the [official repository](https://github.com/rperezll/ng-fast-toast) for more information.
