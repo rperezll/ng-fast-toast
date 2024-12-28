@@ -76,6 +76,9 @@ Now you can showcase the `success` notification example 🚀.
 
 You can find the full configuration and additional details in the [**complete documentation site**](/).
 
+> [!WARNING]
+> The **documentation site** is still under construction.
+
 ## 📝 License
 
 Copyright © 2024 rperezll (https://github.com/rperezll)
