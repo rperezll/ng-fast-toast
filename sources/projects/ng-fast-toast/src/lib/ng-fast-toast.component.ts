@@ -1,9 +1,17 @@
+/**
+ * Copyright © 2024 rperezll (https://github.com/rperezll)
+ *
+ * This file is part of a project licensed under the GPL-3.0 License.
+ * See the LICENSE file in the root directory for more information.
+ */
+
+
 import { Component, Inject, inject, OnInit, Optional } from '@angular/core';
 import { NgFastToastService } from '../services/ng-fast-toast.service';
 import { ToastComponent } from '../ui/toast/toast.component';
 import { ToastConfig } from '../interfaces/notification-config.interface';
 import { generateGuid } from '../utils/generate-guid';
-import { calculateToastColors, calculateToastCustomColors } from '../utils/color-types';
+import { calculateToastCustomColors } from '../utils/color-types';
 import { CommonModule } from '@angular/common';
 import { Config } from '../interfaces/config.interface';
 

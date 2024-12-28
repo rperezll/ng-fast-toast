@@ -1,11 +1,18 @@
 # NgFastToast
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version **18.2.0**.
 
-## Build
+## How to use
 
-Run `ng build ng-fast-toast` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm i ng-fast-toast
+```
 
-## Publishing
+To properly **install**, **configure**, and learn about the **prerequisites**, please refer to the [**official documentation**](https://github.com/rperezll/ng-fast-toast).
 
-After building your library with `ng build ng-fast-toast`, go to the dist folder `cd dist/ng-fast-toast` and run `npm publish`.
+## License
+
+Copyright © 2024 rperezll (https://github.com/rperezll)
+
+- This file is part of a project licensed under the **GPL-3.0 License**.
+- See the LICENSE file in the [official repository](https://github.com/rperezll/ng-fast-toast) for more information.

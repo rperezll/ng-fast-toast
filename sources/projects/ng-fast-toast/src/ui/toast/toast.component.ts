@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Inject, inject, Input, OnInit, Optional, Output } from '@angular/core';
+/**
+ * Copyright © 2024 rperezll (https://github.com/rperezll)
+ *
+ * This file is part of a project licensed under the GPL-3.0 License.
+ * See the LICENSE file in the root directory for more information.
+ */
+
+import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output } from '@angular/core';
 import { ToastConfig } from '../../interfaces/notification-config.interface';
 import { CircleProgressComponent } from '../progress-circle/circle-progress.component';
 import { secondsToMilliseconds } from '../../utils/time-parser';

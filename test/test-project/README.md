@@ -8,4 +8,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Environment
 
-This project is built using a blank Angular 18.2.6 template with Tailwind CSS configured. NgFastToast has been installed via npm and is fully set up for display in the startup application.
+This project is built using a **blank Angular 18.2.6 template** with **Tailwind CSS configured**. NgFastToast has been installed via npm and is fully set up for display in the startup application.

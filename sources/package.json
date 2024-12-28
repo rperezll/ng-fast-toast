@@ -1,6 +1,22 @@
 {
   "name": "showcase-project",
   "version": "0.0.1",
+  "author": {
+    "name": "rperezll",
+    "url": "https://github.com/rperezll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rperezll/ng-fast-toast"
+  },
+  "license": "GPL-3.0",
+  "keywords": [
+    "toast",
+    "notifications",
+    "angular",
+    "fast",
+    "ng-fast-toast"
+  ],
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",

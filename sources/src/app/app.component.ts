@@ -1,3 +1,10 @@
+/**
+ * Copyright © 2024 rperezll (https://github.com/rperezll)
+ *
+ * This file is part of a project licensed under the GPL-3.0 License.
+ * See the LICENSE file in the root directory for more information.
+ */
+
 import { Component, inject } from '@angular/core';
 import { NgFastToastComponent, NgFastToastService, ngFastToastConfig } from '../../projects/ng-fast-toast/src/public-api';
 import { NotificationTypeList } from '../../projects/ng-fast-toast/src/types/notification.type';
@@ -10,7 +17,6 @@ import { mockProvidedConfig } from './mocks/custom-toast.mock';
 	imports: [NgFastToastComponent, GithubIcon],
 	providers: [NgFastToastService, ngFastToastConfig({ align: 'right', customToast: mockProvidedConfig })],
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.css',
 })
 export class AppComponent {
 	title = 'showcase-project';

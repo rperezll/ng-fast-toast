@@ -78,4 +78,7 @@ You can find the full configuration and additional details in the [**complete do
 
 ## 📝 License
 
-- [GPL-3.0 license](https://github.com/atmgrupomaggioli/docshub/blob/main/LICENSE)
+Copyright © 2024 rperezll (https://github.com/rperezll)
+
+- This file is part of a project licensed under the **GPL-3.0 License**.
+- See the [**LICENSE file**](https://github.com/atmgrupomaggioli/docshub/blob/main/LICENSE) for more information.
