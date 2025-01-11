@@ -1,28 +1,30 @@
 {
-  "name": "ng-fast-toast",
-  "version": "0.0.2",
-  "author": {
-    "name": "rperezll",
-    "url": "https://github.com/rperezll"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rperezll/ng-fast-toast"
-  },
-  "license": "GPL-3.0",
-  "keywords": [
-    "toast",
-    "notifications",
-    "angular",
-    "fast",
-    "ng-fast-toast"
-  ],
-  "peerDependencies": {
-    "@angular/common": "^18.2.0",
-    "@angular/core": "^18.2.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+	"name": "ng-fast-toast",
+	"version": "0.0.4",
+	"author": {
+		"name": "rperezll",
+		"url": "https://github.com/rperezll"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rperezll/ng-fast-toast"
+	},
+	"license": "GPL-3.0",
+	"keywords": [
+		"toast",
+		"notifications",
+		"angular",
+		"fast",
+		"ng-fast-toast",
+		"tailwind"
+	],
+	"peerDependencies": {
+		"@angular/common": "^18.2.0",
+		"@angular/core": "^18.2.0"
+	},
+	"dependencies": {
+		"tslib": "^2.3.0"
+	},
+	"sideEffects": false,
+	"private": false
 }

@@ -1,11 +1,11 @@
 /**
- * Copyright © 2024 rperezll (https://github.com/rperezll)
+ * Copyright © 2025 rperezll (https://github.com/rperezll)
  *
  * This file is part of a project licensed under the GPL-3.0 License.
  * See the LICENSE file in the root directory for more information.
  */
 
-import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output, ViewEncapsulation } from '@angular/core';
 import { ToastConfig } from '../../interfaces/notification-config.interface';
 import { CircleProgressComponent } from '../progress-circle/circle-progress.component';
 import { secondsToMilliseconds } from '../../utils/time-parser';
@@ -81,6 +81,8 @@ import { Config } from '../../interfaces/config.interface';
 		}
 	`,
 	templateUrl: './toast.component.html',
+	styleUrl: './toast.component.css',
+	encapsulation: ViewEncapsulation.None
 })
 export class ToastComponent implements OnInit {
 	@Input({ required: true }) config: ToastConfig;

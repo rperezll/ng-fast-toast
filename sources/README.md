@@ -22,7 +22,7 @@ After building your library with `ng build ng-fast-toast`, go to the dist folder
 
 ## License
 
-Copyright © 2024 rperezll (https://github.com/rperezll)
+Copyright © 2025 rperezll (https://github.com/rperezll)
 
 - This project is licensed under the **GPL-3.0 License**.
 - See the LICENSE file in the [official repository](https://github.com/rperezll/ng-fast-toast) for more information.

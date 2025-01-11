@@ -1,5 +1,5 @@
 /**
- * Copyright © 2024 rperezll (https://github.com/rperezll)
+ * Copyright © 2025 rperezll (https://github.com/rperezll)
  *
  * This file is part of a project licensed under the GPL-3.0 License.
  * See the LICENSE file in the root directory for more information.
@@ -33,7 +33,7 @@ export class AppComponent {
 					title: 'Listen!',
 					content:
 						'A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app. With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.',
-					duration: 5,
+					duration: 5000,
 				});
 				break;
 			case 'error':

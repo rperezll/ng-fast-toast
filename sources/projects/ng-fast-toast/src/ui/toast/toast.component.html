@@ -1,5 +1,5 @@
 <!--
-  Copyright © 2024 rperezll (https://github.com/rperezll)
+  Copyright © 2025 rperezll (https://github.com/rperezll)
   
   This file is part of a project licensed under the GPL-3.0 License.
   See the LICENSE file in the root directory for more information.
@@ -8,7 +8,10 @@
 <div
 	id="{{ config.guid }}"
 	class="flex w-[300px] translate-x-full transform border-s-4 p-3 opacity-0 transition-transform"
-	[ngClass]="config.colorConfig.borderToastColor + ' ' + config.colorConfig.bgToastColor"
+	[ngStyle]="{
+		'border-color': config.colorConfig.borderToastColor, 
+		'background-color' : config.colorConfig.bgToastColor 
+	}"
 >
 	<section class="flex-1">
 		<header class="flex items-center gap-2">
@@ -25,11 +28,23 @@
 				@default {}
 			}
 			@if (config.content.title) {
-				<h1 class="font-medium" [ngClass]="config.colorConfig.titleTextColor">{{ config.content.title }}</h1>
+				<h1 
+					class="font-medium text-red-600" 
+					[ngStyle]="{
+						'color': config.colorConfig.titleTextColor
+					}"
+				>
+					{{ config.content.title }}
+				</h1>
 			}
 		</header>
 
-		<p class="mt-2 text-sm" [ngClass]="config.colorConfig.contentTextColor">
+		<p 
+			class="mt-2 text-sm" 
+			[ngStyle]="{
+				'color': config.colorConfig.contentTextColor
+			}"
+		>
 			{{ config.content.content }}
 		</p>
 	</section>
