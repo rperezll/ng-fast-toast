@@ -1,5 +1,5 @@
 {
-  "name": "test-project",
+  "name": "test-project-tailwind",
   "scripts": {
     "dev": "ng serve",
     "build": "ng build"
@@ -14,7 +14,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
-    "ng-fast-toast": "^0.0.4",
+    "ng-fast-toast": "^0.0.1-dev",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
@@ -31,6 +31,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
     "typescript": "~5.5.2"
   }
 }
