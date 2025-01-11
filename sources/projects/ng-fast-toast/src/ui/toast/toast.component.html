@@ -5,12 +5,13 @@
   See the LICENSE file in the root directory for more information.
 -->
 
+<!-- id="{{ config.guid }}" -->
 <div
-	id="{{ config.guid }}"
+	#toastElement
 	class="flex w-[300px] translate-x-full transform border-s-4 p-3 opacity-0 transition-transform"
 	[ngStyle]="{
-		'border-color': config.colorConfig.borderToastColor, 
-		'background-color' : config.colorConfig.bgToastColor 
+		'border-color': config.colorConfig.borderToastColor,
+		'background-color': config.colorConfig.bgToastColor
 	}"
 >
 	<section class="flex-1">
@@ -28,10 +29,10 @@
 				@default {}
 			}
 			@if (config.content.title) {
-				<h1 
-					class="font-medium text-red-600" 
+				<h1
+					class="font-medium text-red-600"
 					[ngStyle]="{
-						'color': config.colorConfig.titleTextColor
+						color: config.colorConfig.titleTextColor
 					}"
 				>
 					{{ config.content.title }}
@@ -39,10 +40,10 @@
 			}
 		</header>
 
-		<p 
-			class="mt-2 text-sm" 
+		<p
+			class="mt-2 text-sm"
 			[ngStyle]="{
-				'color': config.colorConfig.contentTextColor
+				color: config.colorConfig.contentTextColor
 			}"
 		>
 			{{ config.content.content }}

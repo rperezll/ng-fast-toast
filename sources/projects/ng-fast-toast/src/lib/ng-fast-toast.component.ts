@@ -5,8 +5,7 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-
-import { Component, Inject, inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional, ViewEncapsulation } from '@angular/core';
 import { NgFastToastService } from '../services/ng-fast-toast.service';
 import { ToastComponent } from '../ui/toast/toast.component';
 import { ToastConfig } from '../interfaces/notification-config.interface';
@@ -21,6 +20,7 @@ import { Config } from '../interfaces/config.interface';
 	imports: [ToastComponent, CommonModule],
 	templateUrl: './ng-fast-toast.component.html',
 	styleUrl: './ng-fast-toast.component.css',
+	encapsulation: ViewEncapsulation.None,
 })
 export class NgFastToastComponent implements OnInit {
 	notifications: ToastConfig[] = [];

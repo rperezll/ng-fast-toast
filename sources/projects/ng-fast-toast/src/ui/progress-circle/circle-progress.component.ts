@@ -5,7 +5,6 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
@@ -29,7 +28,7 @@ import { Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/co
 			}
 		}
 	`,
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
 })
 export class CircleProgressComponent {
 	@Input({ required: true }) time: number;

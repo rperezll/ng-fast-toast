@@ -5,7 +5,7 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Optional, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ToastConfig } from '../../interfaces/notification-config.interface';
 import { CircleProgressComponent } from '../progress-circle/circle-progress.component';
 import { secondsToMilliseconds } from '../../utils/time-parser';
@@ -16,7 +16,7 @@ import { ErrorIconSvg } from '../../icons/error/error.component';
 import { Config } from '../../interfaces/config.interface';
 
 @Component({
-	selector: 'toast',
+	selector: 'toast-',
 	standalone: true,
 	imports: [CommonModule, CircleProgressComponent, WarningIconSvg, SuccessIconSvg, ErrorIconSvg],
 	styles: `
@@ -82,24 +82,24 @@ import { Config } from '../../interfaces/config.interface';
 	`,
 	templateUrl: './toast.component.html',
 	styleUrl: './toast.component.css',
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
 })
 export class ToastComponent implements OnInit {
 	@Input({ required: true }) config: ToastConfig;
 	@Output() finish = new EventEmitter<string>();
+	@ViewChild('toastElement') alertElement: ElementRef;
 
 	constructor(@Inject('ng-fast-toast-config') @Optional() public ngFastToastConfig?: Config) {}
 
 	ngOnInit(): void {
 		this.toastCicle();
-
-		console.log(this.config.colorConfig.bgToastColor);
 	}
 
 	private toastCicle() {
 		// Initial waiting time
 		setTimeout(() => {
-			const alertElement = document.getElementById(this.config.guid);
+			// const alertElement = document.getElementById(this.config.guid);
+			const alertElement = this.alertElement.nativeElement;
 			alertElement.classList.remove('opacity-0');
 			if (this.ngFastToastConfig?.align === 'left') {
 				alertElement.classList.add('toast-enter-left');

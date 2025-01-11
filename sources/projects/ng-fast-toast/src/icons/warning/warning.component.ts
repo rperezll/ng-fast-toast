@@ -5,15 +5,15 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
 	selector: 'warning-icon',
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: './warning.component.html',
+	encapsulation: ViewEncapsulation.None,
 })
 export class WarningIconSvg {
 	@Input({ required: true }) svgColor: string;

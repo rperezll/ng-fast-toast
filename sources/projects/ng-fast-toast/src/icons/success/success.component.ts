@@ -5,15 +5,15 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
 	selector: 'success-icon',
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: './success.component.html',
+	encapsulation: ViewEncapsulation.None,
 })
 export class SuccessIconSvg {
 	@Input({ required: true }) svgColor: string;
