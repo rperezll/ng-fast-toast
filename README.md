@@ -2,10 +2,9 @@
 
 A **fast and lightweight Angular (18+) notification library** for adding stylish, customizable toast alerts to your app. Perfect for projects with **Tailwind** or simple setups, it offers easy control over appearance, position, and behavior.
 
-_"Fast alerts, less hassle, and yes, it plays nicely with Tailwind!"_
+_"Fast alerts, less hassle, and yes, it works seamlessly with Tailwind or without it!"_
 
-> [!WARNING]
-> **ng-fast-toast** is still in development. It does not have a release yet.
+> [!WARNING] > **ng-fast-toast** is still in development. It does not have a release yet.
 
 <div style="margin-top: 20px; margin-bottom: 20px;" href="https://ng-fast-toast.vercel.app/" align="center">
   <img alt="Snapshot funcionality ng-fast-toast" src="/docs/images/ng-fast-toast.png" height="auto" width="500" style="border-radius:50%">
@@ -21,13 +20,23 @@ You can try the [**Live Demo**](https://ng-fast-toast.vercel.app)
 
 ## 🕹️ Installation and Usage
 
+### With TailwindCSS
+
 1. **Install the library:**
 
+- _Using tailwind:_
+
 ```bash
-npm i ng-fast-toast
+npm i ng-fast-toast@latest
 ```
 
-2. **Configure Tailwind:**
+- _Without TailwindCSS:_
+
+```bash
+npm i ng-fast-toast@agnostic
+```
+
+2. **(Optional) Configure Tailwind support if needed:**
 
 - Add this to your `tailwind.config`:
 
