@@ -24,7 +24,7 @@ You can try the [**Live Demo**](https://ng-fast-toast.vercel.app)
 
 1. **Install the library:**
 
-- _Using tailwind:_
+- _Using TailwindCSS:_
 
 ```bash
 npm i ng-fast-toast@latest
@@ -36,7 +36,7 @@ npm i ng-fast-toast@latest
 npm i ng-fast-toast@agnostic
 ```
 
-2. **(Optional) Configure Tailwind support if needed:**
+2. **(Optional) Configure TailwindCSS support if needed:**
 
 - Add this to your `tailwind.config`:
 
