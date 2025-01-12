@@ -4,7 +4,8 @@ A **fast** and **lightweight** library for **Angular 18+** that makes handling a
 
 _Fast alerts, no hassle and powered by Shadow DOM!"_
 
-> [!WARNING] > **ng-fast-toast** is still in development. It does not have a release yet.
+> [!WARNING]
+> **ng-fast-toast** is still in development. It does not have a release yet.
 
 <div style="margin-top: 20px; margin-bottom: 20px;" href="https://ng-fast-toast.vercel.app/" align="center">
   <img alt="Snapshot funcionality ng-fast-toast" src="/docs/images/ng-fast-toast.png" height="auto" width="500" style="border-radius:50%">
