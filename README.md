@@ -2,7 +2,7 @@
 
 A **fast** and **lightweight** library for **Angular 18+** that makes handling alerts and notifications effortless. Styled with Tailwind but built for production with a **fully agnostic approach using Shadow DOM**.
 
-_Fast alerts, no hassle and powered by Shadow DOM!"_
+_"Fast alerts, no hassle and powered by Shadow DOM!"_
 
 > [!WARNING]
 > **ng-fast-toast** is still in development. It does not have a release yet.
