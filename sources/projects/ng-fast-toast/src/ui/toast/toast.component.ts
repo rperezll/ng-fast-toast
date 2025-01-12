@@ -7,7 +7,7 @@
 
 import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { ToastConfig } from '../../interfaces/notification-config.interface';
-import { CircleProgressComponent } from '../progress-circle/circle-progress.component';
+import { CircleProgressComponent } from '../circle-progress/circle-progress.component';
 import { secondsToMilliseconds } from '../../utils/time-parser';
 import { CommonModule } from '@angular/common';
 import { WarningIconSvg } from '../../icons/warning/warning.component';

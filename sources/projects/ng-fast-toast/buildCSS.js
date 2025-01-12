@@ -34,6 +34,14 @@ function restoreFile(filePath) {
 	}
 }
 
+// Function to delete a generated CSS file
+function deleteGeneratedCss(filePath) {
+	if (fs.existsSync(filePath)) {
+		fs.unlinkSync(filePath);
+		console.info(`🗑️ Deleted: ${filePath}`);
+	}
+}
+
 // Function that, given a plain HTML content string, searches for Tailwind CSS classes located within the class attribute or the Angular ngClass attribute.
 function extractClassesFromHtml(html) {
 	// ⚡ Static Classes
@@ -160,12 +168,14 @@ async function generateCssForComponents(baseDir) {
 
 		let resultRow = {
 			component: path.basename(file), // Only the component name without the full path
-			classesFound: classes.length > 0 ? 'Yes' : 'No',
-			cssFileGenerated: '',
+			twFound: classes.length > 0 ? 'Yes' : 'No',
+			cssGenerated: '',
+			tsModified: '', // New column for tracking .ts file modification
 		};
 
 		if (classes.length === 0) {
-			resultRow.cssFileGenerated = 'No';
+			resultRow.cssGenerated = 'No';
+			resultRow.tsModified = 'No';
 			results.push(resultRow);
 			continue;
 		}
@@ -188,13 +198,20 @@ async function generateCssForComponents(baseDir) {
 			// 🏗️ Update the corresponding .ts file
 			const tsFilePath = file.replace('.component.html', '.component.ts');
 			if (fs.existsSync(tsFilePath)) {
+				// Backup the .ts file before modifying it
+				backupFile(tsFilePath);
+
 				updateComponentDecorator(tsFilePath, cssFilePath);
+				resultRow.tsModified = 'Yes';
+			} else {
+				resultRow.tsModified = 'No';
 			}
 
-			resultRow.cssFileGenerated = 'Yes';
+			resultRow.cssGenerated = 'Yes';
 		} catch (error) {
 			console.error(`🔴 [ng-fast-toast-cssbuild] Processing error ${file}:`, error);
-			resultRow.cssFileGenerated = 'Error';
+			resultRow.cssGenerated = 'Error';
+			resultRow.tsModified = 'Error';
 		}
 
 		results.push(resultRow);
@@ -211,7 +228,7 @@ async function main(baseDir, command) {
 	console.info('🟢 [ng-fast-toast-cssbuild] Command started.');
 
 	try {
-		await execPromise(command);
+		await exec.exec(command);
 		console.info('🟢 [ng-fast-toast-cssbuild] Command completed.');
 	} catch (error) {
 		console.error('🔴 [ng-fast-toast-cssbuild] Command Execution Error:', error.message);
@@ -222,10 +239,16 @@ async function main(baseDir, command) {
 	const componentFiles = findComponentHtmlFiles(baseDir);
 	for (const file of componentFiles) {
 		const tsFilePath = file.replace('.component.html', '.component.ts');
+		const cssFilePath = file.replace('.component.html', '.component.css');
+
+		// Restore TypeScript file
 		if (fs.existsSync(`${tsFilePath}.bak`)) {
 			restoreFile(tsFilePath);
 			console.info(`🟢 Restored: ${tsFilePath}`);
 		}
+
+		// Delete generated CSS file
+		deleteGeneratedCss(cssFilePath);
 	}
 	console.info('🟢 [ng-fast-toast-cssbuild] All files restored.');
 }
