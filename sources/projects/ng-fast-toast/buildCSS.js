@@ -249,19 +249,19 @@ async function main(baseDir, command) {
 
 		console.info('🔄 [ng-fast-toast-cssbuild] Restoring modified files...');
 		const componentFiles = findComponentHtmlFiles(baseDir);
-		// for (const file of componentFiles) {
-		// 	const tsFilePath = file.replace('.component.html', '.component.ts');
-		// 	const cssFilePath = file.replace('.component.html', '.component.css');
+		for (const file of componentFiles) {
+			const tsFilePath = file.replace('.component.html', '.component.ts');
+			const cssFilePath = file.replace('.component.html', '.component.css');
 
-		// 	// Restore TS file
-		// 	if (fs.existsSync(`${tsFilePath}.bak`)) {
-		// 		restoreFile(tsFilePath);
-		// 		console.info(`🟢 Restored: ${tsFilePath}`);
-		// 	}
+			// Restore TS file
+			if (fs.existsSync(`${tsFilePath}.bak`)) {
+				restoreFile(tsFilePath);
+				console.info(`🟢 Restored: ${tsFilePath}`);
+			}
 
-		// 	// Delete generated CSS file
-		// 	deleteGeneratedCss(cssFilePath);
-		// }
+			// Delete generated CSS file
+			deleteGeneratedCss(cssFilePath);
+		}
 		console.info('🟢 [ng-fast-toast-cssbuild] All files restored.');
 	} catch (error) {
 		console.error('🔴 [ng-fast-toast-cssbuild] Command Execution Error:', error.message);
