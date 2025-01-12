@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { NgFastToastComponent, NgFastToastService } from 'ng-fast-toast';
+import { Component, OnInit } from '@angular/core';
+import { NgFastToastComponent, ngFastToastConfig, NgFastToastService } from 'ng-fast-toast';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +9,16 @@ import { NgFastToastComponent, NgFastToastService } from 'ng-fast-toast';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  title = 'test-project-without-tailwind';
+  title = 'test-project';
   testTypes = ['success', 'error', 'warning', 'loading'];
 
-  toast = inject(NgFastToastService);
+  constructor(
+    private toast: NgFastToastService
+  ) {}
 
   ngOnInit() {
       setTimeout(() => {
-        this.toast.success({title: 'Hello Success', content: 'ng-fast-toast are ready!', duration: 5});
+        this.toast.success({title: 'Hello Success', content: 'ng-fast-toast are ready!', duration: 5000});
         setTimeout(() => {
           this.toast.warn({title: 'Hello Warn', content: 'ng-fast-toast are ready!', duration: 5});
         }, 2000);
@@ -24,6 +26,5 @@ export class AppComponent implements OnInit {
           this.toast.error({title: 'Hello Error', content: 'ng-fast-toast are ready!', duration: 5});
         }, 3000);
       }, 1000);
-
   }
 }

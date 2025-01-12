@@ -1,6 +1,6 @@
 {
 	"name": "ng-fast-toast",
-	"version": "0.0.4",
+	"version": "1.0.2",
 	"author": {
 		"name": "rperezll",
 		"url": "https://github.com/rperezll"
@@ -15,8 +15,7 @@
 		"notifications",
 		"angular",
 		"fast",
-		"ng-fast-toast",
-		"tailwind"
+		"ng-fast-toast"
 	],
 	"peerDependencies": {
 		"@angular/common": "^18.2.0",
@@ -25,6 +24,5 @@
 	"dependencies": {
 		"tslib": "^2.3.0"
 	},
-	"sideEffects": false,
-	"private": false
+	"sideEffects": false
 }

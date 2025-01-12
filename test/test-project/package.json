@@ -1,8 +1,7 @@
 {
   "name": "test-project",
   "scripts": {
-    "dev": "ng serve",
-    "build": "ng build"
+    "dev": "ng serve"
   },
   "private": true,
   "dependencies": {
@@ -14,7 +13,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
-    "ng-fast-toast": "^0.0.4",
+    "ng-fast-toast": "^1.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

@@ -17,6 +17,19 @@ function findComponentHtmlFiles(dir, files = []) {
 	return files;
 }
 
+// 🔎 Recursively search for *.component.ts files
+function findComponentTsFiles(dir, files = []) {
+	fs.readdirSync(dir).forEach((file) => {
+		const fullPath = path.join(dir, file);
+		if (fs.statSync(fullPath).isDirectory()) {
+			findComponentTsFiles(fullPath, files);
+		} else if (file.endsWith('.component.ts')) {
+			files.push(fullPath);
+		}
+	});
+	return files;
+}
+
 // 🏗️ Create a backup of a file
 function backupFile(filePath) {
 	const backupPath = `${filePath}.bak`;
@@ -30,16 +43,80 @@ function restoreFile(filePath) {
 	const backupPath = `${filePath}.bak`;
 	if (fs.existsSync(backupPath)) {
 		fs.copyFileSync(backupPath, filePath);
-		fs.unlinkSync(backupPath); // Delete the backup after restoring
+		fs.unlinkSync(backupPath);
 	}
 }
 
-// Function to delete a generated CSS file
-function deleteGeneratedCss(filePath) {
-	if (fs.existsSync(filePath)) {
-		fs.unlinkSync(filePath);
-		console.info(`🗑️ Deleted: ${filePath}`);
+// Update the Angular component decorator
+function updateComponentDecorator(componentPath, cssFilePath = null) {
+	let content = fs.readFileSync(componentPath, 'utf8');
+
+	// Backup the file before modifying
+	backupFile(componentPath);
+
+	// Add or replace import for ViewEncapsulation
+	const viewEncapsulationImport = `ViewEncapsulation`;
+	const angularCoreImportRegex = /import\s*\{\s*([^\}]*)\}\s*from\s*'@angular\/core';/;
+
+	if (angularCoreImportRegex.test(content)) {
+		content = content.replace(angularCoreImportRegex, (match, imports) => {
+			// Check if ViewEncapsulation is already imported
+			const importList = imports.split(',').map((imp) => imp.trim());
+			if (!importList.includes(viewEncapsulationImport)) {
+				importList.push(viewEncapsulationImport);
+			}
+			return `import { ${importList.join(', ')} } from '@angular/core';`;
+		});
+	} else {
+		// Add the import if it doesn't exist
+		content = `import { ${viewEncapsulationImport} } from '@angular/core';\n` + content;
 	}
+
+	// Add or replace encapsulation: ViewEncapsulation.ShadowDom
+	const encapsulationRegex = /encapsulation\s*:\s*ViewEncapsulation\.[a-zA-Z]+/;
+	if (encapsulationRegex.test(content)) {
+		// Replace existing encapsulation
+		content = content.replace(encapsulationRegex, `encapsulation: ViewEncapsulation.ShadowDom`);
+	} else {
+		// Add encapsulation if it doesn't exist
+		content = content.replace(/@Component\(\{/, `@Component({\n  encapsulation: ViewEncapsulation.ShadowDom,`);
+	}
+
+	// If a CSS file path is provided, add or update `styleUrls`
+	if (cssFilePath) {
+		const styleUrlsRegex = /styleUrls\s*:\s*\[([^\]]*)\]/;
+		const newCssPath = `./${path.basename(cssFilePath)}`;
+
+		if (styleUrlsRegex.test(content)) {
+			// If styleUrls exists, add the new path to the array if it's not already there
+			content = content.replace(styleUrlsRegex, (match, existingPaths) => {
+				// Normalize paths (remove quotes)
+				const paths = existingPaths.split(',').map((path) => path.trim().replace(/^['"]|['"]$/g, ''));
+
+				if (!paths.includes(newCssPath)) {
+					paths.push(newCssPath);
+				}
+
+				const updatedPaths = paths.map((p) => `'${p}'`).join(', ');
+				return `styleUrls: [${updatedPaths}]`;
+			});
+		} else {
+			// If styleUrls does not exist, add it
+			content = content.replace(/@Component\(\{/, `@Component({\n  styleUrls: ['./${path.basename(cssFilePath)}'],`);
+		}
+	}
+
+	fs.writeFileSync(componentPath, content);
+}
+
+// 🚀 Update all component TS files
+function updateAllComponentDecorators(baseDir) {
+	const componentTsFiles = findComponentTsFiles(baseDir);
+
+	componentTsFiles.forEach((file) => {
+		updateComponentDecorator(file);
+		console.info(`🟢 Updated: ${file}`);
+	});
 }
 
 // Function that, given a plain HTML content string, searches for Tailwind CSS classes located within the class attribute or the Angular ngClass attribute.
@@ -96,67 +173,11 @@ function extractClassesFromHtml(html) {
 	return [...classes];
 }
 
-// Function to update the Angular component decorator
-function updateComponentDecorator(componentPath, cssFilePath) {
-	let content = fs.readFileSync(componentPath, 'utf8');
-
-	// Backup the file before modifying
-	backupFile(componentPath);
-
-	// Add or replace import for `ViewEncapsulation`
-	const viewEncapsulationImport = `ViewEncapsulation`;
-	const angularCoreImportRegex = /import\s*\{\s*([^\}]*)\}\s*from\s*'@angular\/core';/;
-
-	if (angularCoreImportRegex.test(content)) {
-		content = content.replace(angularCoreImportRegex, (match, imports) => {
-			// Check if ViewEncapsulation is already imported
-			const importList = imports.split(',').map((imp) => imp.trim());
-			if (!importList.includes(viewEncapsulationImport)) {
-				importList.push(viewEncapsulationImport);
-			}
-			return `import { ${importList.join(', ')} } from '@angular/core';`;
-		});
-	} else {
-		// Add the import if it doesn't exist
-		content = `import { ${viewEncapsulationImport} } from '@angular/core';\n` + content;
-	}
-
-	// Add or replace `encapsulation: ViewEncapsulation.ShadowDom`
-	const encapsulationRegex = /encapsulation\s*:\s*ViewEncapsulation\.[a-zA-Z]+/;
-	if (encapsulationRegex.test(content)) {
-		// Replace existing encapsulation
-		content = content.replace(encapsulationRegex, `encapsulation: ViewEncapsulation.ShadowDom`);
-	} else {
-		// Add encapsulation if it doesn't exist
-		content = content.replace(/@Component\(\{/, `@Component({\n  encapsulation: ViewEncapsulation.ShadowDom,`);
-	}
-
-	// Add or update `styleUrls`
-	const styleUrlsRegex = /styleUrls\s*:\s*\[([^\]]*)\]/;
-	const newCssPath = `./${path.basename(cssFilePath)}`;
-
-	if (styleUrlsRegex.test(content)) {
-		// If `styleUrls` exists, add the new path to the array if it's not already there
-		content = content.replace(styleUrlsRegex, (match, existingPaths) => {
-			const paths = existingPaths.split(',').map((path) => path.trim().replace(/^['"]|['"]$/g, '')); // Normalize paths (remove quotes)
-
-			if (!paths.includes(newCssPath)) {
-				paths.push(newCssPath);
-			}
-
-			const updatedPaths = paths.map((p) => `'${p}'`).join(', ');
-			return `styleUrls: [${updatedPaths}]`;
-		});
-	} else {
-		// If `styleUrls` does not exist, add it
-		content = content.replace(/@Component\(\{/, `@Component({\n  styleUrls: ['./${path.basename(cssFilePath)}'],`);
-	}
-
-	fs.writeFileSync(componentPath, content);
-}
-
-// 🚀 Main Function
+// 🚀 Generate a complete CSS file for component
 async function generateCssForComponents(baseDir) {
+	// Update all TS files first
+	updateAllComponentDecorators(baseDir);
+
 	const componentFiles = findComponentHtmlFiles(baseDir);
 
 	const results = [];
@@ -167,15 +188,13 @@ async function generateCssForComponents(baseDir) {
 		const classes = extractClassesFromHtml(htmlContent);
 
 		let resultRow = {
-			component: path.basename(file), // Only the component name without the full path
+			component: path.basename(file),
 			twFound: classes.length > 0 ? 'Yes' : 'No',
 			cssGenerated: '',
-			tsModified: '', // New column for tracking .ts file modification
 		};
 
 		if (classes.length === 0) {
 			resultRow.cssGenerated = 'No';
-			resultRow.tsModified = 'No';
 			results.push(resultRow);
 			continue;
 		}
@@ -202,9 +221,6 @@ async function generateCssForComponents(baseDir) {
 				backupFile(tsFilePath);
 
 				updateComponentDecorator(tsFilePath, cssFilePath);
-				resultRow.tsModified = 'Yes';
-			} else {
-				resultRow.tsModified = 'No';
 			}
 
 			resultRow.cssGenerated = 'Yes';
@@ -228,30 +244,64 @@ async function main(baseDir, command) {
 	console.info('🟢 [ng-fast-toast-cssbuild] Command started.');
 
 	try {
-		await exec.exec(command);
+		const result = await executeCommand(command);
 		console.info('🟢 [ng-fast-toast-cssbuild] Command completed.');
+
+		console.info('🔄 [ng-fast-toast-cssbuild] Restoring modified files...');
+		const componentFiles = findComponentHtmlFiles(baseDir);
+		// for (const file of componentFiles) {
+		// 	const tsFilePath = file.replace('.component.html', '.component.ts');
+		// 	const cssFilePath = file.replace('.component.html', '.component.css');
+
+		// 	// Restore TS file
+		// 	if (fs.existsSync(`${tsFilePath}.bak`)) {
+		// 		restoreFile(tsFilePath);
+		// 		console.info(`🟢 Restored: ${tsFilePath}`);
+		// 	}
+
+		// 	// Delete generated CSS file
+		// 	deleteGeneratedCss(cssFilePath);
+		// }
+		console.info('🟢 [ng-fast-toast-cssbuild] All files restored.');
 	} catch (error) {
 		console.error('🔴 [ng-fast-toast-cssbuild] Command Execution Error:', error.message);
 	}
 
 	// 🛠️ Restore all modified files
-	console.info('🔄 [ng-fast-toast-cssbuild] Restoring modified files...');
-	const componentFiles = findComponentHtmlFiles(baseDir);
-	for (const file of componentFiles) {
-		const tsFilePath = file.replace('.component.html', '.component.ts');
-		const cssFilePath = file.replace('.component.html', '.component.css');
+}
 
-		// Restore TypeScript file
-		if (fs.existsSync(`${tsFilePath}.bak`)) {
-			restoreFile(tsFilePath);
-			console.info(`🟢 Restored: ${tsFilePath}`);
-		}
+async function executeCommand(command) {
+	return new Promise((resolve, reject) => {
+		exec.exec(
+			command,
+			{
+				listeners: {
+					stdout: (data) => {
+						output += data.toString();
+					},
+					stderr: (data) => {
+						output += data.toString();
+					},
+				},
+			},
+			(error, stdout, stderr) => {
+				if (error) {
+					reject(new Error(`Command failed with error: ${error.message}`));
+				} else {
+					resolve(stdout);
+				}
+			},
+		);
+	});
+}
 
-		// Delete generated CSS file
-		deleteGeneratedCss(cssFilePath);
+// Function to delete a generated CSS file
+function deleteGeneratedCss(filePath) {
+	if (fs.existsSync(filePath)) {
+		fs.unlinkSync(filePath);
+		console.info(`🗑️ Deleted: ${filePath}`);
 	}
-	console.info('🟢 [ng-fast-toast-cssbuild] All files restored.');
 }
 
 const baseDir = path.resolve('.');
-main(baseDir, 'ng build ng-fast-toast');
+main(baseDir, 'ng build');

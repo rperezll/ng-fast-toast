@@ -23,11 +23,7 @@ export class AppComponent implements AfterViewInit {
 	fastToast = inject(NgFastToastService);
 	notificationTypeList = NotificationTypeList;
 
-	ngAfterViewInit(): void {
-		setTimeout(() => {
-			this.executeToast('warning');
-		}, 1000);
-	}
+	ngAfterViewInit(): void {}
 
 	executeToast(type) {
 		switch (type) {
@@ -39,7 +35,7 @@ export class AppComponent implements AfterViewInit {
 					title: 'Listen!',
 					content:
 						'A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app. With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.',
-					duration: 50000,
+					duration: 5,
 				});
 				break;
 			case 'error':

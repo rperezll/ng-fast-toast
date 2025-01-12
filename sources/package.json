@@ -24,8 +24,6 @@
 		"build:lib": "ng build ng-fast-toast",
 		"build:agnostic": "cd projects/ng-fast-toast && node buildCSS.js",
 		"publish:lib": "cd dist/ng-fast-toast && npm publish",
-		"publish:agnostic": "cd dist/ng-fast-toast && npm publish --tag agnostic",
-		"watch": "ng build --watch --configuration development",
 		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.html\" \"projects/**/*.ts\" \"projects/**/*.html\"",
 		"lint": "ng lint"
 	},

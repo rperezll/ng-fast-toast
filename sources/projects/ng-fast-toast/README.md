@@ -5,7 +5,7 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 ## How to use
 
 ```bash
-npm i ng-fast-toast
+npm i ng-fast-toast@latest
 ```
 
 To properly **install**, **configure**, and learn about the **prerequisites**, please refer to the [**official documentation**](https://github.com/rperezll/ng-fast-toast).
