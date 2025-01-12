@@ -6,14 +6,13 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'error-icon',
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: './error.component.html',
-	encapsulation: ViewEncapsulation.None,
 })
 export class ErrorIconSvg {
 	@Input({ required: true }) svgColor: string;

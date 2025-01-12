@@ -5,7 +5,7 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Optional, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { ToastConfig } from '../../interfaces/notification-config.interface';
 import { CircleProgressComponent } from '../progress-circle/circle-progress.component';
 import { secondsToMilliseconds } from '../../utils/time-parser';
@@ -81,8 +81,6 @@ import { Config } from '../../interfaces/config.interface';
 		}
 	`,
 	templateUrl: './toast.component.html',
-	styleUrl: './toast.component.css',
-	encapsulation: ViewEncapsulation.None,
 })
 export class ToastComponent implements OnInit {
 	@Input({ required: true }) config: ToastConfig;

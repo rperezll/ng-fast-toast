@@ -5,7 +5,7 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
 import { NgFastToastComponent, NgFastToastService, ngFastToastConfig } from '../../projects/ng-fast-toast/src/public-api';
 import { NotificationTypeList } from '../../projects/ng-fast-toast/src/types/notification.type';
 import { GithubIcon } from '../icons/github/github.component';
@@ -18,10 +18,16 @@ import { mockProvidedConfig } from './mocks/custom-toast.mock';
 	providers: [NgFastToastService, ngFastToastConfig({ align: 'right', customToast: mockProvidedConfig })],
 	templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 	title = 'showcase-project';
 	fastToast = inject(NgFastToastService);
 	notificationTypeList = NotificationTypeList;
+
+	ngAfterViewInit(): void {
+		setTimeout(() => {
+			this.executeToast('warning');
+		}, 1000);
+	}
 
 	executeToast(type) {
 		switch (type) {
@@ -33,7 +39,7 @@ export class AppComponent {
 					title: 'Listen!',
 					content:
 						'A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app. With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.',
-					duration: 5,
+					duration: 50000,
 				});
 				break;
 			case 'error':

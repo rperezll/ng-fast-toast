@@ -6,14 +6,13 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'warning-icon',
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: './warning.component.html',
-	encapsulation: ViewEncapsulation.None,
 })
 export class WarningIconSvg {
 	@Input({ required: true }) svgColor: string;

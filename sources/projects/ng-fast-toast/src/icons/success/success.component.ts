@@ -6,14 +6,13 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'success-icon',
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: './success.component.html',
-	encapsulation: ViewEncapsulation.None,
 })
 export class SuccessIconSvg {
 	@Input({ required: true }) svgColor: string;
