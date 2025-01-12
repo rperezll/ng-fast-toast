@@ -16,7 +16,7 @@ import { ErrorIconSvg } from '../../icons/error/error.component';
 import { Config } from '../../interfaces/config.interface';
 
 @Component({
-	selector: 'toast-',
+	selector: 'toast-root',
 	standalone: true,
 	imports: [CommonModule, CircleProgressComponent, WarningIconSvg, SuccessIconSvg, ErrorIconSvg],
 	styles: `
