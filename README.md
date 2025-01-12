@@ -1,11 +1,10 @@
 # Ng-fast-toast
 
-A **fast and lightweight Angular (18+) notification library** for adding stylish, customizable toast alerts to your app. Perfect for projects with **Tailwind** or simple setups, it offers easy control over appearance, position, and behavior.
+A **fast** and **lightweight** library for **Angular 18+** that makes handling alerts and notifications effortless. Styled with Tailwind but built for production with a **fully agnostic approach using Shadow DOM**.
 
-_"Fast alerts, less hassle, and yes, it works seamlessly with Tailwind or without it!"_
+_Fast alerts, no hassle and powered by Shadow DOM!"_
 
-> [!WARNING]
-> **ng-fast-toast** is still in development. It does not have a release yet.
+> [!WARNING] > **ng-fast-toast** is still in development. It does not have a release yet.
 
 <div style="margin-top: 20px; margin-bottom: 20px;" href="https://ng-fast-toast.vercel.app/" align="center">
   <img alt="Snapshot funcionality ng-fast-toast" src="/docs/images/ng-fast-toast.png" height="auto" width="500" style="border-radius:50%">
@@ -17,34 +16,15 @@ You can try the [**Live Demo**](https://ng-fast-toast.vercel.app)
 
 - 💡 **Easy to use**: Simple API to trigger notifications with various types and styles.
 - 🎨 **Customizable**: Fully configurable notification styles.
-- 📱 **Responsive**: Optimized for all screen sizes and devices, ensuring notifications look great on mobile, tablet, and desktop.
+- 📱 **Agnostic**: A library with encapsulated styles, designed to work seamlessly across a wide range of Angular project configurations.
+- 🥰 **Minimal**: Only requires dependencies from Angular Core, ensuring a lightweight and hassle-free integration.
 
 ## 🕹️ Installation and Usage
 
-### With TailwindCSS
-
 1. **Install the library:**
-
-- _Using TailwindCSS:_
 
 ```bash
 npm i ng-fast-toast@latest
-```
-
-- _Without TailwindCSS:_
-
-```bash
-npm i ng-fast-toast@agnostic
-```
-
-2. **(Optional) Configure TailwindCSS support if needed:**
-
-- Add this to your `tailwind.config`:
-
-```ts
-content: [
-  "./node_modules/ng-fast-toast/**/*.{html,ts,js,mjs}"
-],
 ```
 
 3. **Import the toast component `NgFastToastComponent`:**
