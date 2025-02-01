@@ -44,7 +44,7 @@ export class AppComponent implements AfterViewInit {
 			case 'loading':
 				const guid = await this.fastToast.loading({ title: 'Waiting for...', content: 'I am processing...', duration: 50000 });
 				setTimeout(() => {
-					this.fastToast.updateLoading(guid, 'error', { title: 'Perfecto', content: 'I am processing...', duration: 2 });
+					this.fastToast.updateLoading(guid, 'error', { title: 'Oh no', content: 'Something went wrong.', duration: 2 });
 				}, 2000);
 				break;
 			default:

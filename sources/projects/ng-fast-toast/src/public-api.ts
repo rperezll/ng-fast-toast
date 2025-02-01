@@ -5,7 +5,6 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-
 /*
  * Public API Surface of ng-fast-toast
  */
@@ -15,3 +14,4 @@ export * from './lib/ng-fast-toast.component';
 export * from './config/ng-fast-toast.config';
 export * from './interfaces/config.interface';
 export * from './interfaces/bg-color.interface';
+export * from './interfaces/notification.interface';

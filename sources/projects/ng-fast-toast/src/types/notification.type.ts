@@ -5,6 +5,5 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-export type UpdateNotificationType = 'success' | 'warning' | 'error';
 export type NotificationType = 'success' | 'warning' | 'error' | 'loading';
 export const NotificationTypeList: NotificationType[] = ['success', 'warning', 'error', 'loading'];

@@ -5,7 +5,6 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-
 export interface Notification {
 	title?: string;
 	content: string;

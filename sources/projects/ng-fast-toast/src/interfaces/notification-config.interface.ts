@@ -5,7 +5,6 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-import { Signal } from '@angular/core';
 import { NotificationType } from '../types/notification.type';
 import { BgColorTypes } from './bg-color.interface';
 import { Subject } from 'rxjs';
