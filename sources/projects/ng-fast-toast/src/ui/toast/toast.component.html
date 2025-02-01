@@ -8,34 +8,37 @@
 <!-- id="{{ config.guid }}" -->
 <div
 	#toastElement
-	class="flex w-[300px] translate-x-full transform border-s-4 p-3 opacity-0 transition-transform"
+	class="group flex w-[300px] translate-x-full transform animate-pulse rounded-xl border-2 border-s-8 p-3 opacity-0 transition-transform"
 	[ngStyle]="{
-		'border-color': config.colorConfig.borderToastColor,
-		'background-color': config.colorConfig.bgToastColor
+		'border-color': toast.colorConfig.borderToastColor,
+		'background-color': toast.colorConfig.bgToastColor
 	}"
 >
 	<section class="flex-1">
 		<header class="flex items-center gap-2">
-			@switch (config.type) {
+			@switch (toast.type) {
 				@case ('error') {
-					<error-icon [size]="{ width: 20, height: 20 }" [svgColor]="config.colorConfig.titleSvgColor"></error-icon>
+					<error-icon [size]="{ width: 20, height: 20 }" [svgColor]="toast.colorConfig.titleSvgColor"></error-icon>
 				}
 				@case ('warning') {
-					<warning-icon [size]="{ width: 20, height: 20 }" [svgColor]="config.colorConfig.titleSvgColor"></warning-icon>
+					<warning-icon [size]="{ width: 20, height: 20 }" [svgColor]="toast.colorConfig.titleSvgColor"></warning-icon>
 				}
 				@case ('success') {
-					<success-icon [size]="{ width: 20, height: 20 }" [svgColor]="config.colorConfig.titleSvgColor"></success-icon>
+					<success-icon [size]="{ width: 20, height: 20 }" [svgColor]="toast.colorConfig.titleSvgColor"></success-icon>
+				}
+				@case ('loading') {
+					<loading-icon class="animate-spin" [size]="{ width: 20, height: 20 }" [svgColor]="toast.colorConfig.titleSvgColor"></loading-icon>
 				}
 				@default {}
 			}
-			@if (config.content.title) {
+			@if (toast.content.title) {
 				<h1
 					class="font-medium text-red-600"
 					[ngStyle]="{
-						color: config.colorConfig.titleTextColor
+						color: toast.colorConfig.titleTextColor
 					}"
 				>
-					{{ config.content.title }}
+					{{ toast.content.title }}
 				</h1>
 			}
 		</header>
@@ -43,13 +46,23 @@
 		<p
 			class="mt-2 text-sm"
 			[ngStyle]="{
-				color: config.colorConfig.contentTextColor
+				color: toast.colorConfig.contentTextColor
 			}"
 		>
-			{{ config.content.content }}
+			{{ toast.content.content }}
 		</p>
 	</section>
-	<section class="flex flex-initial items-end">
-		<circle-progress [time]="config.duration" [color]="config.colorConfig.progressCircleColor"></circle-progress>
-	</section>
+	@if (toast.type != 'loading') {
+		<section class="flex flex-initial flex-col items-end justify-between">
+			<error-icon
+				(click)="manualRemove()"
+				title="Dismiss notification"
+				class="cursor-pointer opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+				[size]="{ width: 15, height: 15 }"
+				[svgColor]="toast.colorConfig.progressCircleColor"
+			></error-icon>
+
+			<circle-progress [time]="toast.duration" [color]="toast.colorConfig.progressCircleColor"></circle-progress>
+		</section>
+	}
 </div>

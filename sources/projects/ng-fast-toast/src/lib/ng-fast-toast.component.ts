@@ -5,7 +5,7 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional, signal } from '@angular/core';
 import { NgFastToastService } from '../services/ng-fast-toast.service';
 import { ToastComponent } from '../ui/toast/toast.component';
 import { ToastConfig } from '../interfaces/notification-config.interface';
@@ -13,6 +13,7 @@ import { generateGuid } from '../utils/generate-guid';
 import { calculateToastCustomColors } from '../utils/color-types';
 import { CommonModule } from '@angular/common';
 import { Config } from '../interfaces/config.interface';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'ng-fast-toast',
@@ -34,11 +35,13 @@ export class NgFastToastComponent implements OnInit {
 	}
 
 	notificationListener() {
+		// Create a new Toast
 		this.ngFastToastService.emitCreateNotification$.subscribe({
 			next: (data) => {
 				if (data) {
+					const guid = generateGuid();
 					this.notifications.push({
-						guid: generateGuid(),
+						guid,
 						content: {
 							content: data.notification.content,
 							title: data.notification.title,
@@ -46,7 +49,34 @@ export class NgFastToastComponent implements OnInit {
 						colorConfig: calculateToastCustomColors(this.ngFastToastConfig?.customToast ?? [], data.type),
 						duration: data.notification.duration,
 						type: data.type,
+						reactivate: new Subject<boolean>(),
 					});
+
+					if (data.callback) {
+						data.callback(guid);
+					}
+				}
+			},
+		});
+
+		// Update an existing Toast
+		this.ngFastToastService.emitUpdateNotification$.subscribe({
+			next: (data) => {
+				if (data) {
+					let index = this.notifications.findIndex((x) => x.guid === data.guid);
+					if (index !== -1) {
+						this.notifications[index].type = data.type;
+						this.notifications[index].colorConfig = calculateToastCustomColors(this.ngFastToastConfig?.customToast ?? [], data.type);
+						this.notifications[index].duration = data.notification.duration;
+						if (data.notification) {
+							this.notifications[index].content = {
+								content: data.notification.content,
+								title: data.notification.title,
+							};
+						}
+
+						this.notifications[index].reactivate.next(true);
+					}
 				}
 			},
 		});

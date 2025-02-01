@@ -5,7 +5,7 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
+import { Component, computed, ElementRef, EventEmitter, Inject, Input, OnInit, Optional, Output, Renderer2, ViewChild } from '@angular/core';
 import { ToastConfig } from '../../interfaces/notification-config.interface';
 import { CircleProgressComponent } from '../circle-progress/circle-progress.component';
 import { secondsToMilliseconds } from '../../utils/time-parser';
@@ -14,11 +14,12 @@ import { WarningIconSvg } from '../../icons/warning/warning.component';
 import { SuccessIconSvg } from '../../icons/success/success.component';
 import { ErrorIconSvg } from '../../icons/error/error.component';
 import { Config } from '../../interfaces/config.interface';
+import { LoadingIconSvg } from '../../icons/loading/loading.component';
 
 @Component({
 	selector: 'toast-root',
 	standalone: true,
-	imports: [CommonModule, CircleProgressComponent, WarningIconSvg, SuccessIconSvg, ErrorIconSvg],
+	imports: [CommonModule, CircleProgressComponent, WarningIconSvg, SuccessIconSvg, ErrorIconSvg, LoadingIconSvg],
 	styles: `
 		@keyframes slideInRight {
 			0% {
@@ -83,41 +84,84 @@ import { Config } from '../../interfaces/config.interface';
 	templateUrl: './toast.component.html',
 })
 export class ToastComponent implements OnInit {
-	@Input({ required: true }) config: ToastConfig;
+	@Input({ required: true }) toast: ToastConfig;
 	@Output() finish = new EventEmitter<string>();
 	@ViewChild('toastElement') alertElement: ElementRef;
+	startX = 0;
 
-	constructor(@Inject('ng-fast-toast-config') @Optional() public ngFastToastConfig?: Config) {}
+	constructor(
+		private renderer: Renderer2,
+		@Inject('ng-fast-toast-config') @Optional() public ngFastToastConfig?: Config,
+	) {}
 
 	ngOnInit(): void {
-		this.toastCicle();
+		this.toast.reactivate.subscribe((reactivate) => {
+			this.toastExecute();
+		});
+		this.toastExecute();
 	}
 
-	private toastCicle() {
+	private toastExecute() {
 		// Initial waiting time
 		setTimeout(() => {
-			// const alertElement = document.getElementById(this.config.guid);
-			const alertElement = this.alertElement.nativeElement;
-			alertElement.classList.remove('opacity-0');
-			if (this.ngFastToastConfig?.align === 'left') {
-				alertElement.classList.add('toast-enter-left');
-			} else {
-				alertElement.classList.add('toast-enter-right');
-			}
+			this.startToast();
+			this.listenPadRemove();
 			// Exit waiting time setting form user
 			setTimeout(() => {
-				if (this.ngFastToastConfig?.align === 'left') {
-					alertElement.classList.remove('toast-enter-left');
-					alertElement.classList.add('toast-exit-left');
-				} else {
-					alertElement.classList.remove('toast-enter-right');
-					alertElement.classList.add('toast-exit-right');
-				}
-				// Waiting time for remove notification
-				setTimeout(() => {
-					this.finish.emit(this.config.guid);
-				}, 500);
-			}, secondsToMilliseconds(this.config.duration));
+				this.exitToast();
+			}, secondsToMilliseconds(this.toast.duration));
 		}, 100);
+	}
+
+	private startToast() {
+		// const alertElement = document.getElementById(this.config.guid);
+		const alertElement = this.alertElement.nativeElement;
+		alertElement.classList.remove('opacity-0');
+		if (this.ngFastToastConfig?.align === 'left') {
+			alertElement.classList.add('toast-enter-left');
+		} else {
+			alertElement.classList.add('toast-enter-right');
+		}
+	}
+
+	private exitToast() {
+		const alertElement = this.alertElement.nativeElement;
+		if (this.ngFastToastConfig?.align === 'left') {
+			alertElement.classList.remove('toast-enter-left');
+			alertElement.classList.add('toast-exit-left');
+		} else {
+			alertElement.classList.remove('toast-enter-right');
+			alertElement.classList.add('toast-exit-right');
+		}
+		// Waiting time for remove notification
+		setTimeout(() => {
+			this.finish.emit(this.toast.guid);
+		}, 500);
+	}
+
+	manualRemove() {
+		this.exitToast();
+	}
+
+	private listenPadRemove() {
+		this.renderer.listen(this.alertElement.nativeElement, 'touchstart', (event: TouchEvent) => {
+			this.startX = event.touches[0].clientX;
+		});
+
+		this.renderer.listen(this.alertElement.nativeElement, 'touchmove', (event: TouchEvent) => {
+			const deltaX = event.touches[0].clientX - this.startX;
+
+			if (this.ngFastToastConfig.align === 'right') {
+				if (deltaX > 50) {
+					this.exitToast();
+				}
+			}
+
+			if (this.ngFastToastConfig.align === 'left') {
+				if (deltaX < -50) {
+					this.exitToast();
+				}
+			}
+		});
 	}
 }

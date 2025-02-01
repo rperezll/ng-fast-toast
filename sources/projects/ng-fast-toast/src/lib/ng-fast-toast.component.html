@@ -14,8 +14,8 @@
 	}"
 >
 	<div class="flex h-full flex-col items-end justify-end gap-2 p-4">
-		@for (notification of notifications; track notification.guid; let i = $index) {
-			<toast-root [config]="notification" (finish)="finishNotification($event)"></toast-root>
+		@for (notification of notifications; track notification.guid) {
+			<toast-root [toast]="notification" (finish)="finishNotification($event)"></toast-root>
 		}
 	</div>
 </div>

@@ -5,9 +5,10 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-
+import { Signal } from '@angular/core';
 import { NotificationType } from '../types/notification.type';
 import { BgColorTypes } from './bg-color.interface';
+import { Subject } from 'rxjs';
 
 interface ContentToast {
 	title?: string;
@@ -20,4 +21,5 @@ export interface ToastConfig {
 	content: ContentToast;
 	colorConfig: BgColorTypes;
 	duration: number;
+	reactivate: Subject<boolean>;
 }
