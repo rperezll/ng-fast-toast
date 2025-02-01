@@ -7,7 +7,7 @@
 
 import { AfterViewInit, Component, inject } from '@angular/core';
 import { NgFastToastComponent, NgFastToastService, ngFastToastConfig } from '../../projects/ng-fast-toast/src/public-api';
-import { NotificationTypeList } from '../../projects/ng-fast-toast/src/types/notification.type';
+import { NotificationType, NotificationTypeList } from '../../projects/ng-fast-toast/src/types/notification.type';
 import { GithubIcon } from '../icons/github/github.component';
 import { mockProvidedConfig } from './mocks/custom-toast.mock';
 
@@ -21,7 +21,7 @@ import { mockProvidedConfig } from './mocks/custom-toast.mock';
 export class AppComponent implements AfterViewInit {
 	title = 'showcase-project';
 	fastToast = inject(NgFastToastService);
-	notificationTypeList = NotificationTypeList;
+	notificationTypeList: NotificationType[] = NotificationTypeList;
 
 	ngAfterViewInit(): void {}
 
@@ -50,5 +50,9 @@ export class AppComponent implements AfterViewInit {
 			default:
 				break;
 		}
+	}
+
+	trackByIndex(index: number): number {
+		return index;
 	}
 }

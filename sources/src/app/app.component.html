@@ -26,7 +26,7 @@
 		</p>
 
 		<nav class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-			@for (type of notificationTypeList; track notificationTypeList) {
+			@for (type of notificationTypeList; track type) {
 				<a
 					class="cursor-pointer border border-dashed border-red-600 p-3 text-center hover:border-double hover:text-red-700"
 					(click)="executeToast(type)"
