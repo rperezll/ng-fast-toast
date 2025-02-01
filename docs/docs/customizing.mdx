@@ -3,17 +3,14 @@ title: "Customizing Toasts"
 sidebarTitle: "Customizing"
 description: "How to Customize the Library."
 publishDate: "2024-12-21"
-author: {
-    name: "rperezll",
-    url: "https://github.com/rperezll"
-}
+author: { name: "rperezll", url: "https://github.com/rperezll" }
 ---
 
 You can customize the **position** and **colors** of all the elements of the toast card. You can control whether the toast appears from the left or right, as well as modify the background, text, and border colors to match your application's theme.
 
 ## Customizing Types
 
-You can preset or override the styles for the different toast types (`success`, `warning`, and `error`) using the Config type exported by the library. This allows you to easily adjust the appearance of each toast type to fit your design requirements. To override the default styles, use the `ngFastToastConfig` provider injection with the `customToast` field.
+You can preset or override the styles for the different toast types (`success`, `warning`, `error` and `loading`) using the Config type exported by the library. This allows you to easily adjust the appearance of each toast type to fit your design requirements. To override the default styles, use the `ngFastToastConfig` provider injection with the `customToast` field.
 
 ```ts
 import { ngFastToastConfig } from 'ng-fast-toast';
@@ -21,7 +18,7 @@ import { ngFastToastConfig } from 'ng-fast-toast';
 @NgModule({
   selector: "app-root",
   standalone: true,
-  imports: [NgFastToastComponent],  
+  imports: [NgFastToastComponent],
   providers: [ngFastToastConfig(myConfig)],
   templateUrl: "./app.component.html",
 })
@@ -48,18 +45,22 @@ The `myConfig` variable must adhere to the `Config` type, which is also exported
     export const myConfigTypes: BgColorTypes[] = [
       {
         type: 'error',
-        customToast: 'bg-red-500',
+        customToast: '#fbbf24',
       },
       {
         type: 'warning',
         titleSvgColor: '#fbbf24',
       },
-    ]; 
+    ];
     ```
+
   </div>
  </UiBlock>
 
- <Alert type="info">You can consult the definition of all the previous types in the following documentation.</Alert>
+<Alert type="info">
+  You can view the specification of all the types used on the [**types
+  page**](/types).
+</Alert>
 
 ## Alignment
 
@@ -91,9 +92,15 @@ The library allows you to align toasts to the **left** or **right**, using the s
         type: 'warning',
         titleSvgColor: '#fbbf24',
       },
-    ]; 
+    ];
     ```
+
   </div>
  </UiBlock>
 
 The new `align` field added in the previous code block allows you to align the toasts to the **left**.
+
+<Alert type="info">
+  You can view the specification of all the types used on the [**types
+  page**](/types).
+</Alert>

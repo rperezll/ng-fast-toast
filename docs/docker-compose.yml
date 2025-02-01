@@ -10,7 +10,7 @@ services:
       - ./images:/app/public/images
     environment:
       DOCUMENTATION_TITLE: "Standard Documentation"
-      VERSION: "0.0.1-dev"
+      VERSION: "1.1.2"
       AUTHOR: "rperezll"
       LICENSE: "GPL-3.0"
       REPOSITORY_TYPE: "GitHub"
@@ -29,7 +29,7 @@ services:
       - ./images:/app/public/images
     environment:
       DOCUMENTATION_TITLE: "NgFastToast Documentation"
-      VERSION: "0.0.1-dev"
+      VERSION: "1.1.2"
       AUTHOR: "rperezll"
       LICENSE: "GPL-3.0"
       REPOSITORY_TYPE: "GitHub"

@@ -1,0 +1,67 @@
+---
+title: "Toasts types"
+sidebarTitle: "Types"
+description: "Here is the documentation for the types exported by the library."
+publishDate: "2024-02-01"
+author: { name: "rperezll", url: "https://github.com/rperezll" }
+---
+
+To use the library, we must utilize the types to adhere to the function specifications.
+
+## Customization
+
+There are types that define the structures to extend the library's default configurations.
+
+### `Config`
+
+The config type is used to extend the entire alignment and color configuration of our toasts.
+
+```ts
+import { type Config } from "ng-fast-toast";
+```
+
+| Property      | Type               | Description                                                                    |
+| ------------- | ------------------ | ------------------------------------------------------------------------------ |
+| `align`       | `'left'` `'right'` | Defines the alignment of the toast (default `left`)                            |
+| `customToast` | `BgColorTypes[]`   | An array of custom background colors for the toast, defined by `BgColorTypes`. |
+
+### `BgColorTypes`
+
+```ts
+import { type BgColorTypes } from "ng-fast-toast";
+```
+
+| Property              | Type               | Description                                                        |
+| --------------------- | ------------------ | ------------------------------------------------------------------ |
+| `type`                | `NotificationType` | Specifies the notification type, which determines the toast style. |
+| `bgToastColor`        | `string`           | The background color of the toast.                                 |
+| `borderToastColor`    | `string`           | The border color of the toast.                                     |
+| `titleSvgColor`       | `string`           | The color of the SVG icon (if present) in the toast title.         |
+| `titleTextColor`      | `string`           | The text color of the toast title.                                 |
+| `contentTextColor`    | `string`           | The text color of the toast content.                               |
+| `progressCircleColor` | `string`           | The color of the progress circle (if applicable).                  |
+| `contentColor`        | `string`           | The background color of the content area.                          |
+
+## Toast
+
+Now the types that make up the toast itself are specified.
+
+### `NotificationType`
+
+```ts
+import { type NotificationType } from "ng-fast-toast";
+```
+
+- **success** | **info** | **warning** | **error**
+
+### `Notification`
+
+```ts
+import { type Notification } from "ng-fast-toast";
+```
+
+| Property   | Type     | Description                                                 |
+| ---------- | -------- | ----------------------------------------------------------- |
+| `title`    | `string` | The title of the notification.                              |
+| `content`  | `string` | The main content of the notification. (**Required**)        |
+| `duration` | `number` | The duration (in seconds) the notification will be visible. |

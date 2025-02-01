@@ -3,16 +3,13 @@ title: "Toasts Reference"
 sidebarTitle: "Toasts"
 description: "Here are all the existing types of toast notifications."
 publishDate: "2024-12-21"
-author: {
-    name: "rperezll",
-    url: "https://github.com/rperezll"
-}
+author: { name: "rperezll", url: "https://github.com/rperezll" }
 ---
 
 The different types of toast notifications available are provided by the **NgFastToastService**, which exports the necessary methods for their usage.
 
 ```ts
-import { NgFastToastService } from 'ng-fast-toast';
+import { NgFastToastService } from "ng-fast-toast";
 
 fastToast = inject(NgFastToastService);
 ```
@@ -22,14 +19,19 @@ fastToast = inject(NgFastToastService);
 The warning toast indicates a potential issue or caution within our system.
 
 ```ts
-this.fastToast.success({ 
-  title: 'Perfect!', 
-  content: 'Good Job today.', 
-  duration: 5 
+this.fastToast.success({
+  title: "Perfect!",
+  content: "Good Job today.",
+  duration: 5,
 });
 ```
 
 It takes a `Notification` object as a parameter and returns `void`.
+
+<Alert type="info">
+  You can view the specification of all the types used on the [**types
+  page**](/types).
+</Alert>
 
 ## Warning
 
@@ -37,14 +39,18 @@ The warning toast indicates a potential issue or caution within our system.
 
 ```ts
 this.fastToast.warn({
-  title: 'Listen!',
-  content:
-    'You are about to do something that could be dangerous.',
+  title: "Listen!",
+  content: "You are about to do something that could be dangerous.",
   duration: 5,
 });
 ```
 
 It takes a `Notification` object as a parameter and returns `void`.
+
+<Alert type="info">
+  You can view the specification of all the types used on the [**types
+  page**](/types).
+</Alert>
 
 ## Error
 
@@ -52,38 +58,44 @@ The error toast represents a failure or an issue within our system.
 
 ```ts
 this.fastToast.error({
-  title: 'Ooh no!',
-  content:
-    'Something went wrong. Please try again later.',
+  title: "Ooh no!",
+  content: "Something went wrong. Please try again later.",
   duration: 5,
 });
 ```
 
 It takes a `Notification` object as a parameter and returns `void`.
 
+<Alert type="info">
+  You can view the specification of all the types used on the [**types
+  page**](/types).
+</Alert>
+
 ## Loading
 
 The loading toast is used when invoking an asynchronous process, displaying a loading notification, and then updating it based on whether the process succeeds or fails.
 
 ```ts
-const guid = await this.fastToast.loading({ 
-  title: 'Waiting for...', 
-  content: 'I am processing...', 
-  duration: 50000 
+const guid = await this.fastToast.loading({
+  title: "Waiting for...",
+  content: "I am processing...",
+  duration: 50000,
 });
 
 // Do something async...
 
-this.fastToast.updateLoading(
-  guid, 
-  'error', 
-  { 
-    title: 'Completed!', 
-    content: 'The process has finished.', 
-    duration: 5
-  });
+this.fastToast.updateLoading(guid, "error", {
+  title: "Completed!",
+  content: "The process has finished.",
+  duration: 5,
+});
 ```
 
 The loading toast returns a **promise with a guid**, which can be used to update the toast using the **updateLoading** method.
 
 The **updateLoading** method takes the **guid** from the promise response, a **newType** of type `NotificationType`, and a **notification** of type `Notification`.
+
+<Alert type="info">
+  You can view the specification of all the types used on the [**types
+  page**](/types).
+</Alert>
