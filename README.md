@@ -65,7 +65,7 @@ Now you can showcase the `success` notification example 🚀.
 
 ## 📚 Documentation
 
-You can find the full configuration and additional details in the [**complete documentation site**](/).
+You can find the full configuration and additional details in the [**complete documentation site**](https://ng-fast-toast.rperezll.dev/).
 
 > [!WARNING]
 > The **documentation site** is still under construction.

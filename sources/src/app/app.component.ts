@@ -25,10 +25,10 @@ export class AppComponent implements AfterViewInit {
 
 	ngAfterViewInit(): void {}
 
-	executeToast(type) {
+	async executeToast(type) {
 		switch (type) {
 			case 'success':
-				this.fastToast.success({ title: 'Perfect!', content: 'Good Job today.', duration: 3 });
+				this.fastToast.success({ title: 'Perfect!', content: 'Good Job today.', duration: 5 });
 				break;
 			case 'warning':
 				this.fastToast.warn({
@@ -40,6 +40,12 @@ export class AppComponent implements AfterViewInit {
 				break;
 			case 'error':
 				this.fastToast.error({ title: 'Oh noo!', content: 'Something went wrong.', duration: 5 });
+				break;
+			case 'loading':
+				const guid = await this.fastToast.loading({ title: 'Waiting for...', content: 'I am processing...', duration: 50000 });
+				setTimeout(() => {
+					this.fastToast.updateLoading(guid, 'error', { title: 'Perfecto', content: 'I am processing...', duration: 2 });
+				}, 2000);
 				break;
 			default:
 				break;
