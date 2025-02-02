@@ -15,7 +15,7 @@ import { Component, Input } from '@angular/core';
 			viewBox="0 0 256 250"
 			width="256"
 			height="250"
-			fill="#24292f"
+			fill="#9ca3af"
 			xmlns="http://www.w3.org/2000/svg"
 			preserveAspectRatio="xMidYMid"
 			[attr.width]="size.width"

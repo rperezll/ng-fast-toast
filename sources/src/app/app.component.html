@@ -8,34 +8,58 @@
 <!-- 🍞 Selector from the library for displaying toast notifications -->
 <ng-fast-toast></ng-fast-toast>
 
-<section class="flex h-full flex-col items-center justify-center">
-	<div class="flex max-w-[500px] flex-col gap-3 space-y-4 p-10">
-		<header>
-			<a href="https://github.com/rperezll/ng-fast-toast" target="_blank">
-				<div class="flex items-center gap-2 hover:font-bold hover:text-red-700">
-					<github-icon [size]="{ height: 25, width: 25 }"></github-icon>
-					<p class="text-pretty font-mono">rperezll</p>
-				</div>
+<div class="flex h-full items-center justify-center sm:min-h-screen">
+	<div class="mx-auto h-full w-full max-w-2xl rounded-lg bg-gray-900 p-4 font-mono text-green-400 shadow-2xl sm:h-auto">
+		<div class="flex items-center justify-between gap-4">
+			<div class="flex items-center space-x-2">
+				<div class="h-3 w-3 rounded-full bg-red-500"></div>
+				<div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+				<div class="h-3 w-3 rounded-full bg-green-500"></div>
+			</div>
+			<a class="flex space-x-2" [href]="Globals.authorUrl" target="_blank">
+				<p class="text-gray-400 hover:text-white">{{ Globals.author }}</p>
+				<github-icon [size]="{ height: 25, width: 25 }"></github-icon>
 			</a>
-			<h1 class="text-pretty text-4xl font-bold md:text-7xl"> Welcome to Ng Fast Toast </h1>
-		</header>
+		</div>
 
-		<p class="text-pretty font-mono">
-			A lightweight and fast notification library for Angular, designed to make it super easy to display quick, stylish alerts (toasts) in your app.
-			With a simple and customizable API, you can easily control the look, position, and behavior of your notifications.
-		</p>
+		<hr class="my-4 opacity-10" />
 
-		<nav class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-			@for (type of notificationTypeList; track type) {
-				<a
-					class="cursor-pointer border border-dashed border-red-600 p-3 text-center hover:border-double hover:text-red-700"
-					(click)="executeToast(type)"
-				>
-					<span class="font-mono font-semibold">
+		<section class="my-8 flex flex-col">
+			<div class="mb-2">
+				<span class="text-blue-400">me:</span>
+				<span class="text-purple-400">~/angular-project</span>
+				{{ '$ npm install ng-fast-toast@latest' }}
+			</div>
+			<span> Installing dependency... </span>
+
+			<span> 🚀 NgFastToast installed successfully. </span>
+		</section>
+
+		<nav class="grid grid-cols-1 gap-4 font-sans text-white sm:grid-cols-2">
+			@for (type of Globals.notificationTypeList; track type) {
+				<a class="cursor-pointer rounded-xl border bg-white bg-opacity-20 p-3 text-center hover:bg-opacity-30" (click)="executeToast(type)">
+					<span class="font-semibold">
 						{{ type }}
 					</span>
 				</a>
 			}
 		</nav>
+
+		<hr class="my-4 opacity-10" />
+
+		<footer>
+			<section class="flex gap-2">
+				<p class="text-gray-400"
+					>Do you want to integrate?
+					<a [href]="Globals.documentation" target="_blank" class="text-green-400 hover:text-white">See the documentation site.</a>
+				</p>
+			</section>
+			<section class="flex gap-2">
+				<p class="text-gray-400"
+					>Support the project!
+					<a [href]="Globals.repository" target="_blank" class="text-green-400 hover:text-white">GitHub repository.</a>
+				</p>
+			</section>
+		</footer>
 	</div>
-</section>
+</div>

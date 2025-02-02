@@ -18,12 +18,16 @@ import { mockProvidedConfig } from './mocks/custom-toast.mock';
 	providers: [NgFastToastService, ngFastToastConfig({ align: 'right', customToast: mockProvidedConfig })],
 	templateUrl: './app.component.html',
 })
-export class AppComponent implements AfterViewInit {
-	title = 'showcase-project';
+export class AppComponent {
 	fastToast = inject(NgFastToastService);
-	notificationTypeList: NotificationType[] = NotificationTypeList;
 
-	ngAfterViewInit(): void {}
+	Globals = {
+		notificationTypeList: NotificationTypeList,
+		author: 'rperezll',
+		authorUrl: 'https://github.com/rperezll',
+		repository: 'https://github.com/rperezll/ng-fast-toast',
+		documentation: 'https://ng-fast-toast.rperezll.dev',
+	};
 
 	async executeToast(type) {
 		switch (type) {
@@ -50,9 +54,5 @@ export class AppComponent implements AfterViewInit {
 			default:
 				break;
 		}
-	}
-
-	trackByIndex(index: number): number {
-		return index;
 	}
 }
