@@ -11,7 +11,7 @@ You can try the [**Live Demo**](https://ng-fast-toast.vercel.app)
 - 💡 **Easy to use**: Simple API to trigger notifications with various types and styles.
 - 🎨 **Customizable**: Fully configurable notification styles.
 - 📱 **Agnostic**: A library with encapsulated styles, designed to work seamlessly across a wide range of Angular project configurations.
-- 🥰 **Minimal**: Only requires dependencies from Angular Core, ensuring a lightweight and hassle-free integration.
+- 🥰 **Minimal**: Only requires dependencies from Angular, ensuring a lightweight and hassle-free integration.
 
 ## 🕹️ Installation and Usage
 
@@ -59,9 +59,6 @@ Now you can showcase the `success` notification example 🚀.
 ## 📚 Documentation
 
 You can find the full configuration and additional details in the [**complete documentation site**](https://ng-fast-toast.rperezll.dev/).
-
-> [!WARNING]
-> The **documentation site** is still under construction.
 
 ## 📝 License
 
