@@ -4,9 +4,6 @@ A **fast** and **lightweight** library for **Angular 18+** that makes handling a
 
 _"Fast alerts, no hassle and powered by Shadow DOM!"_
 
-> [!WARNING]
-> **ng-fast-toast** is still in development. It does not have a release yet.
-
 You can try the [**Live Demo**](https://ng-fast-toast.vercel.app)
 
 ## ✨ Features
