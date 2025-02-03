@@ -3,15 +3,20 @@ title: "Usage"
 sidebarTitle: "Usage"
 description: "How to use ng-fast-toast to display toast notifications in your Angular project."
 publishDate: "2024-12-21"
-author: {
-    name: "rperezll",
-    url: "https://github.com/rperezll"
-}
+author: { name: "rperezll", url: "https://github.com/rperezll" }
 ---
 
 After installing and configuring Tailwind CSS and ng-fast-toast, you can easily start using toast notifications in your Angular application. Follow the steps below to integrate and display toast messages.
 
+<Alert type="info">
+  Remember that this library **also works with Ionic**. You can check out the
+  test project, which presents an **Ionic template** project with the
+  installation of **ng-fast-toast**. [Visit the
+  project](https://github.com/rperezll/ng-fast-toast/tree/main/test/ionic-project)
+</Alert>
+
 ## Import the Toast Component
+
 To use the toast notifications, first, you need to import the NgFastToastComponent in your main application component.
 
 ```ts
@@ -33,7 +38,7 @@ Next, add the `<ng-fast-toast>` selector to your component's template (e.g., app
 
 ```html
 <ng-fast-toast></ng-fast-toast>
-``` 
+```
 
 Once this is done, you'll see a log message in the browser's console:
 
@@ -59,7 +64,7 @@ export class AppComponent implements OnInit {
   toast = inject(NgFastToastService);
 
   ngOnInit() {
-    this.toast.success({content: 'ng-fast-toast is ready!'});
+    this.toast.success({ content: "ng-fast-toast is ready!" });
   }
 }
 ```
