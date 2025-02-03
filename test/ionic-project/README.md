@@ -1,6 +1,6 @@
 # TestProject | Ionic x ng-fast-toast
 
-This project was generated with [Ionic CLI] v8(https://ionicframework.com/docs/cli) for testing `ng-fast-toast` in a real Ionic environment.
+This project was generated with [Ionic CLI v8](https://ionicframework.com/docs/cli) for testing `ng-fast-toast` in a real Ionic environment.
 
 ## Development server
 
