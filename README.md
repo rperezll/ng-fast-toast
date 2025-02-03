@@ -1,6 +1,6 @@
 # Ng-fast-toast
 
-A **fast** and **lightweight** library for **Angular 18+** that makes handling alerts and notifications effortless. Styled with Tailwind but built for production with a **fully agnostic approach using Shadow DOM**.
+A **fast** and **lightweight** library for **Angular 18+**, also **compatible with Ionic** projects (based on Angular), that makes **handling alerts and notifications** effortless. Styled with Tailwind but built for production with a **fully agnostic approach using Shadow DOM**.
 
 _"Fast alerts, no hassle and powered by Shadow DOM!"_
 
@@ -10,7 +10,7 @@ You can try the [**Live Demo**](https://ng-fast-toast.vercel.app)
 
 - 💡 **Easy to use**: Simple API to trigger notifications with various types and styles.
 - 🎨 **Customizable**: Fully configurable notification styles.
-- 📱 **Agnostic**: A library with encapsulated styles, designed to work seamlessly across a wide range of Angular project configurations.
+- 🌐 **Agnostic**: A library with encapsulated styles, designed to work seamlessly across a wide range of Angular project configurations.
 - 🥰 **Minimal**: Only requires dependencies from Angular, ensuring a lightweight and hassle-free integration.
 
 ## 🕹️ Installation and Usage
@@ -55,6 +55,10 @@ ngOnInit() {
 ```
 
 Now you can showcase the `success` notification example 🚀.
+
+## 📱 Ionic Support
+
+This library is **fully compatible with your Ionic project** (based on Angular). You can try the [Ionic test project](/test/ionic-project) to see the configuration and usage of the library.
 
 ## 📚 Documentation
 

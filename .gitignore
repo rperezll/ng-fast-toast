@@ -20,5 +20,27 @@ showcase-project/npm-debug.log*
 Thumbs.db
 
 # Environment files
-showcase-project/.env
-showcase-project/.env.*.local
+.env
+.env.*.local
+environment.ts
+environment.*.ts
+
+# Globals
+/dist
+/tmp
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+**/node_modules
+npm-debug.log
+.angular
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
