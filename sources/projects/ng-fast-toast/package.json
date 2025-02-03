@@ -1,6 +1,6 @@
 {
 	"name": "ng-fast-toast",
-	"version": "1.1.2",
+	"version": "1.1.3-dev",
 	"author": {
 		"name": "rperezll",
 		"url": "https://github.com/rperezll"
@@ -18,8 +18,8 @@
 		"ng-fast-toast"
 	],
 	"peerDependencies": {
-		"@angular/common": "^18.2.0",
-		"@angular/core": "^18.2.0",
+		"@angular/common": ">=18.2.0",
+		"@angular/core": ">=18.2.0",
 		"rxjs": "^7.8.0"
 	},
 	"dependencies": {
